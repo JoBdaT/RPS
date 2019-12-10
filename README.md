@@ -19,6 +19,7 @@
 **About Us**
 ![about us](./img-README/about-us.png)
 
-
+**Project Management Board**
+![Story Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
 
 
