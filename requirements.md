@@ -49,3 +49,5 @@ Add 4th or 5th options for battle beyond just RPS (ex: dynamite, laser gun)
 - If the player begins the game having already played it, when they enter their name, the app will search local storage to see if the player already has a profile saved.
     - As a stretch goal, we will incorporate more complex data capture to display play pattern data on the High Scores page.
     - This data will include the # of times the player selected each weapon, the # of times the player has lost or won, and the number of rounds the player has played. 
+
+[Domain Model/data flow & wireframe](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
