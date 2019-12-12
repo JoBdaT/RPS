@@ -1,4 +1,31 @@
 body {
-  background-color: green;
+  background-color: whitesmoke;
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
+
+#rounds-screen,
+#main-game-screen,
+#animation-screen,
+#victory-screen {
+  display: none;
+}
+
+.info-screen {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  outline: solid gray 1px;
+}
+
+#name-form {
+  line-height: 300px;
+}
+
+#rounds-form {
+ outline: 1px blue solid;
+ padding-top: 100px;
+}
+
 
