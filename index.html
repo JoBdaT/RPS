@@ -21,15 +21,14 @@
   </section>
 
   <section id="rounds-screen" class="info-screen">
-    <form id="rounds-form">
+    <form id="roundsform">
       <p>Choose how many rounds you would like to play</p>
-      <input type="radio" id="three-rounds" name="rounds" value=3 checked>
-      <label>3</label>
-      <input type="radio" id="five-rounds" name="rounds" value=5>
-      <label>5</label>
-      <input type="radio" id="seven-rounds" name="rounds" value=7>
-      <label>7</label>
-      <button type="submit">Next</button>
+      <select id="roundValue">
+        <option value=3>3</option>
+        <option value=5>5</option>
+        <option value=7>7</option>
+      </select>
+      <button id="rounds-button" type="submit">Next</button>
     </form>
     <button type="button">Back</button>
   </section>
