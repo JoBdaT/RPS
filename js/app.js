@@ -6,10 +6,13 @@
 var nameForm = document.getElementById('name-form');
 var nameScreen = document.getElementById('name-screen');
 var roundsScreen = document.getElementById('rounds-screen');
+var gameScreen = document.getElementById('main-game-screen');
+var roundsButton = document.getElementById('roundsform');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
+roundsButton.addEventListener('submit', displayGameScreen);
 
 //PLAYER OBJECT
 var playerObject = {};
@@ -33,6 +36,14 @@ function displayRounds(event) {
   event.preventDefault();
   hide(nameScreen);
   show(roundsScreen);
+}
+
+function displayGameScreen(event) {
+  event.preventDefault();
+  hide(roundsScreen);
+  show(gameScreen);
+  playerObject.roundsChosen = parseInt(event.target.roundValue.value);
+  console.log('playerObject: ', playerObject);
 }
 
 //function to hide
