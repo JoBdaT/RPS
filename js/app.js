@@ -1,6 +1,7 @@
 'use strict';
 
 //GLOBAL VARIABLES
+var playerArray = [];
 
 //DOM MANIPULATING VARS
 var nameForm = document.getElementById('name-form');
@@ -43,7 +44,30 @@ function displayGameScreen(event) {
   hide(roundsScreen);
   show(gameScreen);
   playerObject.roundsChosen = parseInt(event.target.roundValue.value);
-  console.log('playerObject: ', playerObject);
+  // console.log('playerObject: ', playerObject);
+  storePlayer();
+}
+
+function storePlayer() {
+// add array.splice to update playerObject in playerArray
+
+  console.log('playerArray before storage: ', playerArray);
+
+  var found = true;
+  for (var i = 0; i < playerArray.length; i++) {
+    if (playerArray[i].playerName === playerObject.playerName) {
+      found = false;
+      break;
+    }
+  }
+
+  if (found) {
+    playerArray.push(playerObject);
+  }
+
+  localStorage.setItem('playerArray', JSON.stringify(playerArray));
+  console.log('playerArray after storage: ', playerArray);
+
 }
 
 //function to hide
@@ -61,12 +85,20 @@ function show(elem){
 //FUNCTION TO CHECK FOR USER DATA
 function checkUserData(event) {
   event.preventDefault();
-  var playerName = event.target.nameInput.value;
-  if (localStorage.getItem(playerName)) {
-    var getName = JSON.parse(localStorage.getItem(playerName));
-    playerObject = getName;
-  } else {
-    playerObject = new Player(playerName);
-  } console.log('player object is ',playerObject);
+  var userNameInput = event.target.nameInput.value;
+  playerObject = new Player(userNameInput);
+  // console.log('player object is ',playerObject);
+
+  if (localStorage.getItem('playerArray')) {
+    var getArray = JSON.parse(localStorage.getItem('playerArray'));
+    playerArray = getArray;
+    for (var i = 0; i < playerArray.length; i++) {
+      if (userNameInput === playerArray[i].playerName) {
+        playerObject === playerArray[i];
+      }
+    }
+  }
+  // console.log('player object is ',playerObject);
 }
+
 //FUNCTION TO CREATE CONSTRUCTOR OBJECT
