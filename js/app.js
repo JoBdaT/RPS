@@ -2,6 +2,7 @@
 
 //GLOBAL VARIABLES
 var playerArray = [];
+var weaponArray = ['rock', 'paper', 'scissors'];
 
 //DOM MANIPULATING VARS
 var nameForm = document.getElementById('name-form');
@@ -86,9 +87,29 @@ function storePlayer() {
 }
 function fight(event){
   event.preventDefault();
+  var cpuWeapon = cpuChoice();
+  var userWeapon = event.target.value;
+  // console.log('userWeapon :' ,userWeapon);
+  // console.log('cpuWeapon :' , cpuWeapon);
   hide(gameScreen);
   show(animationScreen);
   window.setTimeout(displayVictoryScreen, 3000);
+
+}
+function cpuChoice () {
+  var randomWeaponIndex = randomIndex(weaponArray.length);
+  var randomWeapon = weaponArray[randomWeaponIndex];
+  return randomWeapon;
+
+
+}
+
+// function compareWeapons () {
+
+// }
+
+function randomIndex(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 
