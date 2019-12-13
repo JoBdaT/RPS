@@ -8,12 +8,21 @@ var nameForm = document.getElementById('name-form');
 var nameScreen = document.getElementById('name-screen');
 var roundsScreen = document.getElementById('rounds-screen');
 var gameScreen = document.getElementById('main-game-screen');
+var animationScreen = document.getElementById('animation-screen');
+var victoryScreen = document.getElementById('victory-screen');
 var roundsButton = document.getElementById('roundsform');
+var weaponButtonOne = document.getElementById('weaponButtonOne');
+var weaponButtonTwo = document.getElementById('weaponButtonTwo');
+var weaponButtonThree = document.getElementById('weaponButtonThree');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
 roundsButton.addEventListener('submit', displayGameScreen);
+weaponButtonOne.addEventListener('click', fight);
+weaponButtonTwo.addEventListener('click', fight);
+weaponButtonThree.addEventListener('click', fight);
+
 
 //PLAYER OBJECT
 var playerObject = {};
@@ -48,6 +57,12 @@ function displayGameScreen(event) {
   storePlayer();
 }
 
+function displayVictoryScreen(){
+  hide(animationScreen);
+  show(victoryScreen);
+}
+
+
 function storePlayer() {
 // add array.splice to update playerObject in playerArray
 
@@ -69,6 +84,13 @@ function storePlayer() {
   console.log('playerArray after storage: ', playerArray);
 
 }
+function fight(event){
+  event.preventDefault();
+  hide(gameScreen);
+  show(animationScreen);
+  window.setTimeout(displayVictoryScreen, 3000);
+}
+
 
 //function to hide
 function hide(elem){
