@@ -100,7 +100,7 @@ function roundCounter (roundsChosen) {
 }
 
 // STORES PLAYER DATA INTO LOCAL STORAGE
-function storePlayer() {
+function storePlayerInitial() {
   // add array.splice to update playerObject in playerArray
   console.log('playerArray before storage: ', playerArray);
 
@@ -112,15 +112,29 @@ function storePlayer() {
     }
   }
 
+  // this part should only fire if player input name does NOT already exist in storage
   if (found) {
     playerArray.push(playerObject);
+    console.log('object pushed to array');
   }
 
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
   console.log('playerArray after storage: ', playerArray);
 }
 
+function storePlayerPostMatch() {
+  // console.log('playerArray before splice', playerArray);
+  // for (var i = 0; i < playerArray.length; i++) {
+  //   if (playerArray[i].playerName === playerObject.playerName) {
+  //     playerArray.splice(i,1,playerObject);
+  //     break;
+  //   }
+  // } console.log('playerArray after splice', playerArray);
+  localStorage.setItem('playerArray', JSON.stringify(playerArray));
+}
+
 //FUNCTION TO DISPLAY GAME SCREEN
+//fires on NEXT BUTTON on ROUNDS screen
 function displayGameScreen(event) {
   event.preventDefault();
   hide(roundsScreen);
@@ -128,7 +142,7 @@ function displayGameScreen(event) {
   var roundsChosen = parseInt(event.target.roundValue.value);
   roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
-  storePlayer();
+  storePlayerInitial();
 }
 
 // ^^ ====== ROUNDS SCREEN ====== ^^ //
@@ -151,6 +165,8 @@ function fight(event){
   var winner = compareWeapons(cpuWeapon, userWeapon);
   declareWinner(userWeapon, cpuWeapon, winner);
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    incrementWinsData();
+    storePlayerPostMatch();
     nextRoundPlayAgainButton.textContent = 'Play Again';
   }
   window.setTimeout(displayVictoryScreen, 1000);
@@ -224,11 +240,22 @@ function handleNextRound() {
   }
 }
 
+function incrementWinsData () {
+  if(playerObject.roundsWon === 0) {
+    playerObject.totalGamesWon++;
+    if (playerObject.roundsChosen === 3) {
+      playerObject.bestOf3Wins++;
+    } else if (playerObject.roundsChosen === 5) {
+      playerObject.bestOf5Wins++;
+    } else {
+      playerObject.bestOf7Wins++;
+    }
+  }
+  playerObject.totalGamesPlayed++;
+}
+
 function playAgain () {
-  // if(playerObject.roundsWon === 0) {
-  //   playerObject.totalGamesWon++;
-  // }
-  // playerObject.totalGamesPlayed++;
+  nextRoundPlayAgainButton.textContent = 'Next Round';
   hide(victoryScreen);
   show(roundsScreen);
 }
