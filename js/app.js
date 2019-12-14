@@ -89,24 +89,62 @@ function fight(event){
   event.preventDefault();
   var cpuWeapon = cpuChoice();
   var userWeapon = event.target.value;
-  // console.log('userWeapon :' ,userWeapon);
-  // console.log('cpuWeapon :' , cpuWeapon);
+  console.log('userWeapon :' ,userWeapon);
+  console.log('cpuWeapon :' , cpuWeapon);
   hide(gameScreen);
   show(animationScreen);
-  window.setTimeout(displayVictoryScreen, 3000);
+  var winner = compareWeapons(cpuWeapon, userWeapon);
+  declareWinner(userWeapon, cpuWeapon, winner);
+  window.setTimeout(displayVictoryScreen, 1000);
+  console.log('winner: ', winner);
+}
+
+var testVictory = document.getElementById('test-victory');
+
+function declareWinner (userWeapon, cpuWeapon, winner) {
+  if (winner === 'tie') {
+    // animate tie
+    testVictory.textContent = 'tie';
+  } else if (userWeapon === winner) {
+    // decrement wins in object
+    // animate userWeapon victory
+    testVictory.textContent = 'User Wins';
+
+  } else {
+    // decrement loses in object
+    // animte cpuWeapon victory
+    testVictory.textContent = 'CPU Wins';
+
+  }
 
 }
+
 function cpuChoice () {
   var randomWeaponIndex = randomIndex(weaponArray.length);
   var randomWeapon = weaponArray[randomWeaponIndex];
   return randomWeapon;
-
-
 }
 
-// function compareWeapons () {
-
-// }
+// compare choices, maybe use Switch statement later?
+function compareWeapons (weaponX, weaponY) {
+  if ((weaponX === 'rock' && weaponY === 'paper')
+  || (weaponY === 'rock' && weaponX === 'paper') ) {
+    return 'paper';
+  }
+  if ((weaponX === 'rock' && weaponY === 'scissors')
+  || (weaponY === 'rock' && weaponX === 'scissors') ) {
+    return 'rock';
+  }
+  if ((weaponX === 'scissors' && weaponY === 'paper')
+  || (weaponY === 'scissors' && weaponX === 'paper') ) {
+    return 'scissors';
+  }
+  if ((weaponX === 'rock' && weaponY === 'rock')
+  || (weaponX === 'paper' && weaponY === 'paper')
+  || (weaponX === 'scissors' && weaponY === 'scissors')) {
+    return 'tie';
+  }
+}
 
 function randomIndex(max) {
   return Math.floor(Math.random() * Math.floor(max));
