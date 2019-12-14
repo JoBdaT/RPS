@@ -26,7 +26,6 @@ weaponButtonTwo.addEventListener('click', fight);
 weaponButtonThree.addEventListener('click', fight);
 nextRoundPlayAgainButton.addEventListener('click', handleNextRound);
 
-
 //PLAYER OBJECT
 var playerObject = {};
 
@@ -44,6 +43,28 @@ function Player (playerName) {
   this.settings = [];
 }
 
+// =================================================== //
+// vv ====== NAME SCREEN ====== vv //
+
+//FUNCTION TO CHECK FOR USER DATA
+function checkUserData(event) {
+  event.preventDefault();
+  var userNameInput = event.target.nameInput.value;
+  playerObject = new Player(userNameInput);
+  // console.log('player object is ',playerObject);
+
+  if (localStorage.getItem('playerArray')) {
+    var getArray = JSON.parse(localStorage.getItem('playerArray'));
+    playerArray = getArray;
+    for (var i = 0; i < playerArray.length; i++) {
+      if (userNameInput === playerArray[i].playerName) {
+        playerObject === playerArray[i];
+      }
+    }
+  }
+  // console.log('player object is ',playerObject);
+}
+
 //FUNCTION TO DISPLAY ROUNDS
 function displayRounds(event) {
   event.preventDefault();
@@ -51,73 +72,36 @@ function displayRounds(event) {
   show(roundsScreen);
 }
 
-// Function to determine the round end
-function handleNextRound() {
-  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+// ^^ ====== NAME SCREEN ====== ^^  //
+// =================================================== //
 
-    playAgain();
-  } else {
-    nextRound();
-  }
 
-}
+// =================================================== //
+// vv ====== ROUNDS SCREEN ====== vv //
 
-function playAgain () {
-  // if(playerObject.roundsWon === 0) {
-  //   playerObject.totalGamesWon++;
-  // }
-  // playerObject.totalGamesPlayed++;
-  hide(victoryScreen);
-  show(roundsScreen);
-
-}
-
-function nextRound() {
-  hide(victoryScreen);
-  show(gameScreen);
-}
-
-//FUNCTION TO DISPLAY GAME SCREEN
-function displayGameScreen(event) {
-  event.preventDefault();
-  hide(roundsScreen);
-  show(gameScreen);
-  var roundsChosen = parseInt(event.target.roundValue.value);
-  roundCounter(roundsChosen);
-  // console.log('playerObject: ', playerObject);
-  storePlayer();
-}
-
-//FN to populate round value
+//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUNDEND CHECKS
 function roundCounter (roundsChosen) {
   playerObject.roundsChosen = roundsChosen;
 
   switch (roundsChosen) {
-    case 3:
-      playerObject.roundsWon = 2;
-      playerObject.roundsLost = 2;
-      break;
-    case 5:
-      playerObject.roundsWon = 3;
-      playerObject.roundsLost = 3;
-      break;
-    case 7:
-      playerObject.roundsWon = 4;
-      playerObject.roundsLost = 4;
-      break;  
-
-
+  case 3:
+    playerObject.roundsWon = 2;
+    playerObject.roundsLost = 2;
+    break;
+  case 5:
+    playerObject.roundsWon = 3;
+    playerObject.roundsLost = 3;
+    break;
+  case 7:
+    playerObject.roundsWon = 4;
+    playerObject.roundsLost = 4;
+    break;
   }
 }
 
-function displayVictoryScreen(){
-  hide(animationScreen);
-  show(victoryScreen);
-}
-
+// STORES PLAYER DATA INTO LOCAL STORAGE
 function storePlayer() {
-// add array.splice to update playerObject in playerArray
-
+  // add array.splice to update playerObject in playerArray
   console.log('playerArray before storage: ', playerArray);
 
   var found = true;
@@ -134,8 +118,27 @@ function storePlayer() {
 
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
   console.log('playerArray after storage: ', playerArray);
-
 }
+
+//FUNCTION TO DISPLAY GAME SCREEN
+function displayGameScreen(event) {
+  event.preventDefault();
+  hide(roundsScreen);
+  show(gameScreen);
+  var roundsChosen = parseInt(event.target.roundValue.value);
+  roundCounter(roundsChosen);
+  // console.log('playerObject: ', playerObject);
+  storePlayer();
+}
+
+// ^^ ====== ROUNDS SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+
+// =================================================== //
+// vv ====== GAME/ANIMATION/BATTLE SCREEN ====== vv //
 
 function fight(event){
   event.preventDefault();
@@ -161,17 +164,14 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
     // animate tie
     testVictory.textContent = 'tie';
   } else if (userWeapon === winner) {
-    // decrement wins in object
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
     playerObject.roundsWon--;
   } else {
-    // decrement loses in object
     // animate cpuWeapon victory
     testVictory.textContent = 'CPU Wins';
     playerObject.roundsLost--;
   }
-
 }
 
 function cpuChoice () {
@@ -201,10 +201,53 @@ function compareWeapons (weaponX, weaponY) {
   }
 }
 
+function displayVictoryScreen(){
+  hide(animationScreen);
+  show(victoryScreen);
+}
+
+// ^^ ====== GAME/ANIMATION/BATTLE SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+
+// =================================================== //
+// vv ====== VICTORY SCREEN ====== vv //
+
+// Function to determine the round end
+function handleNextRound() {
+  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    playAgain();
+  } else {
+    nextRound();
+  }
+}
+
+function playAgain () {
+  // if(playerObject.roundsWon === 0) {
+  //   playerObject.totalGamesWon++;
+  // }
+  // playerObject.totalGamesPlayed++;
+  hide(victoryScreen);
+  show(roundsScreen);
+}
+
+function nextRound() {
+  hide(victoryScreen);
+  show(gameScreen);
+}
+
+// ^^ ====== VICTORY SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+// =================================================== //
+// vv ====== HELPER FUNCTIONS ====== vv //
 function randomIndex(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
-
 
 //function to hide
 function hide(elem){
@@ -215,24 +258,7 @@ function hide(elem){
 function show(elem){
   elem.style.display = 'block';
 }
-
-//FUNCTION TO CHECK FOR USER DATA
-function checkUserData(event) {
-  event.preventDefault();
-  var userNameInput = event.target.nameInput.value;
-  playerObject = new Player(userNameInput);
-  // console.log('player object is ',playerObject);
-
-  if (localStorage.getItem('playerArray')) {
-    var getArray = JSON.parse(localStorage.getItem('playerArray'));
-    playerArray = getArray;
-    for (var i = 0; i < playerArray.length; i++) {
-      if (userNameInput === playerArray[i].playerName) {
-        playerObject === playerArray[i];
-      }
-    }
-  }
-  // console.log('player object is ',playerObject);
-}
+// ^^ ====== HELPER FUNCTIONS ====== ^^ //
+// =================================================== //
 
 
