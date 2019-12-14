@@ -54,11 +54,27 @@ function displayRounds(event) {
 // Function to determine the round end
 function handleNextRound() {
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
-    nextRoundPlayAgainButton.textContent = 'Play Again';
-    // playAgain()
+
+    playAgain();
   } else {
-    // nextRound()
+    nextRound();
   }
+
+}
+
+function playAgain () {
+  // if(playerObject.roundsWon === 0) {
+  //   playerObject.totalGamesWon++;
+  // }
+  // playerObject.totalGamesPlayed++;
+  hide(victoryScreen);
+  show(roundsScreen);
+
+}
+
+function nextRound() {
+  hide(victoryScreen);
+  show(gameScreen);
 }
 
 //FUNCTION TO DISPLAY GAME SCREEN
@@ -131,6 +147,9 @@ function fight(event){
   show(animationScreen);
   var winner = compareWeapons(cpuWeapon, userWeapon);
   declareWinner(userWeapon, cpuWeapon, winner);
+  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    nextRoundPlayAgainButton.textContent = 'Play Again';
+  }
   window.setTimeout(displayVictoryScreen, 1000);
   console.log('winner: ', winner);
 }
