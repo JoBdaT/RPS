@@ -49,20 +49,26 @@ function displayRounds(event) {
   show(roundsScreen);
 }
 
+//FUNCTION TO DISPLAY GAME SCREEN
 function displayGameScreen(event) {
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
-  playerObject.roundsChosen = parseInt(event.target.roundValue.value);
+  var roundsChosen = parseInt(event.target.roundValue.value);
+  roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
   storePlayer();
+}
+
+//FN to populate round value
+function roundCounter (roundsChosen) {
+  playerObject.roundsChosen = roundsChosen;
 }
 
 function displayVictoryScreen(){
   hide(animationScreen);
   show(victoryScreen);
 }
-
 
 function storePlayer() {
 // add array.splice to update playerObject in playerArray
@@ -85,6 +91,7 @@ function storePlayer() {
   console.log('playerArray after storage: ', playerArray);
 
 }
+
 function fight(event){
   event.preventDefault();
   var cpuWeapon = cpuChoice();
@@ -109,12 +116,12 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
     // decrement wins in object
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
-
+    playerObject.roundsWon--;
   } else {
     // decrement loses in object
-    // animte cpuWeapon victory
+    // animate cpuWeapon victory
     testVictory.textContent = 'CPU Wins';
-
+    playerObject.roundsLost--;
   }
 
 }
@@ -161,8 +168,6 @@ function show(elem){
   elem.style.display = 'block';
 }
 
-
-
 //FUNCTION TO CHECK FOR USER DATA
 function checkUserData(event) {
   event.preventDefault();
@@ -182,4 +187,4 @@ function checkUserData(event) {
   // console.log('player object is ',playerObject);
 }
 
-//FUNCTION TO CREATE CONSTRUCTOR OBJECT
+
