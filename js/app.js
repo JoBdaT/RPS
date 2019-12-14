@@ -15,6 +15,7 @@ var roundsButton = document.getElementById('roundsform');
 var weaponButtonOne = document.getElementById('weaponButtonOne');
 var weaponButtonTwo = document.getElementById('weaponButtonTwo');
 var weaponButtonThree = document.getElementById('weaponButtonThree');
+var nextRoundPlayAgainButton = document.getElementById('next-round-button');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
@@ -23,6 +24,7 @@ roundsButton.addEventListener('submit', displayGameScreen);
 weaponButtonOne.addEventListener('click', fight);
 weaponButtonTwo.addEventListener('click', fight);
 weaponButtonThree.addEventListener('click', fight);
+nextRoundPlayAgainButton.addEventListener('click', handleNextRound);
 
 
 //PLAYER OBJECT
@@ -47,6 +49,16 @@ function displayRounds(event) {
   event.preventDefault();
   hide(nameScreen);
   show(roundsScreen);
+}
+
+// Function to determine the round end
+function handleNextRound() {
+  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    nextRoundPlayAgainButton.textContent = 'Play Again';
+    // playAgain()
+  } else {
+    // nextRound()
+  }
 }
 
 //FUNCTION TO DISPLAY GAME SCREEN
