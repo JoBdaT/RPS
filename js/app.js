@@ -63,6 +63,23 @@ function displayGameScreen(event) {
 //FN to populate round value
 function roundCounter (roundsChosen) {
   playerObject.roundsChosen = roundsChosen;
+
+  switch (roundsChosen) {
+    case 3:
+      playerObject.roundsWon = 2;
+      playerObject.roundsLost = 2;
+      break;
+    case 5:
+      playerObject.roundsWon = 3;
+      playerObject.roundsLost = 3;
+      break;
+    case 7:
+      playerObject.roundsWon = 4;
+      playerObject.roundsLost = 4;
+      break;  
+
+
+  }
 }
 
 function displayVictoryScreen(){
