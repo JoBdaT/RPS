@@ -20,6 +20,7 @@ var nextRoundPlayAgainButton = document.getElementById('next-round-button');
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
+// 1
 roundsButton.addEventListener('submit', displayGameScreen);
 weaponButtonOne.addEventListener('click', fight);
 weaponButtonTwo.addEventListener('click', fight);
@@ -102,12 +103,13 @@ function roundCounter (roundsChosen) {
 // STORES PLAYER DATA INTO LOCAL STORAGE
 function storePlayerInitial() {
   // add array.splice to update playerObject in playerArray
-  console.log('playerArray before storage: ', playerArray);
+  console.log('playerArray before storage: ', playerArray.length);
 
   var found = true;
   for (var i = 0; i < playerArray.length; i++) {
     if (playerArray[i].playerName === playerObject.playerName) {
       found = false;
+      // console.log('Inside loop for player array length');
       break;
     }
   }
@@ -123,25 +125,24 @@ function storePlayerInitial() {
 }
 
 function storePlayerPostMatch() {
-  // console.log('playerArray before splice', playerArray);
-  // for (var i = 0; i < playerArray.length; i++) {
-  //   if (playerArray[i].playerName === playerObject.playerName) {
-  //     playerArray.splice(i,1,playerObject);
-  //     break;
-  //   }
-  // } console.log('playerArray after splice', playerArray);
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
 }
 
 //FUNCTION TO DISPLAY GAME SCREEN
 //fires on NEXT BUTTON on ROUNDS screen
 function displayGameScreen(event) {
+  // console.log('You chose rounds and hit next');
+  // console.log('playerArray Data inside display game screen before hide', playerArray);
+
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
   var roundsChosen = parseInt(event.target.roundValue.value);
+  // console.log('playerArray Data inside display game screen before rounds', playerArray);
+
   roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
+  // console.log('playerArray Data inside display game screen', playerArray);
   storePlayerInitial();
 }
 
@@ -169,7 +170,7 @@ function fight(event){
     storePlayerPostMatch();
     nextRoundPlayAgainButton.textContent = 'Play Again';
   }
-  window.setTimeout(displayVictoryScreen, 1000);
+  window.setTimeout(displayVictoryScreen, 100);
   console.log('winner: ', winner);
 }
 
