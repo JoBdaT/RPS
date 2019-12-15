@@ -1,18 +1,31 @@
 'use strict';
 
 //GLOBAL VARIABLES
+var playerArray = [];
+var weaponArray = ['rock', 'paper', 'scissors'];
 
 //DOM MANIPULATING VARS
 var nameForm = document.getElementById('name-form');
 var nameScreen = document.getElementById('name-screen');
 var roundsScreen = document.getElementById('rounds-screen');
 var gameScreen = document.getElementById('main-game-screen');
+var animationScreen = document.getElementById('animation-screen');
+var victoryScreen = document.getElementById('victory-screen');
 var roundsButton = document.getElementById('roundsform');
+var weaponButtonOne = document.getElementById('weaponButtonOne');
+var weaponButtonTwo = document.getElementById('weaponButtonTwo');
+var weaponButtonThree = document.getElementById('weaponButtonThree');
+var nextRoundPlayAgainButton = document.getElementById('next-round-button');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
+// 1
 roundsButton.addEventListener('submit', displayGameScreen);
+weaponButtonOne.addEventListener('click', fight);
+weaponButtonTwo.addEventListener('click', fight);
+weaponButtonThree.addEventListener('click', fight);
+nextRoundPlayAgainButton.addEventListener('click', handleNextRound);
 
 //PLAYER OBJECT
 var playerObject = {};
@@ -31,6 +44,28 @@ function Player (playerName) {
   this.settings = [];
 }
 
+// =================================================== //
+// vv ====== NAME SCREEN ====== vv //
+
+//FUNCTION TO CHECK FOR USER DATA
+function checkUserData(event) {
+  event.preventDefault();
+  var userNameInput = event.target.nameInput.value;
+  playerObject = new Player(userNameInput);
+  // console.log('player object is ',playerObject);
+
+  if (localStorage.getItem('playerArray')) {
+    var getArray = JSON.parse(localStorage.getItem('playerArray'));
+    playerArray = getArray;
+    for (var i = 0; i < playerArray.length; i++) {
+      if (userNameInput === playerArray[i].playerName) {
+        playerObject === playerArray[i];
+      }
+    }
+  }
+  // console.log('player object is ',playerObject);
+}
+
 //FUNCTION TO DISPLAY ROUNDS
 function displayRounds(event) {
   event.preventDefault();
@@ -38,12 +73,208 @@ function displayRounds(event) {
   show(roundsScreen);
 }
 
+// ^^ ====== NAME SCREEN ====== ^^  //
+// =================================================== //
+
+
+// =================================================== //
+// vv ====== ROUNDS SCREEN ====== vv //
+
+//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUNDEND CHECKS
+function roundCounter (roundsChosen) {
+  playerObject.roundsChosen = roundsChosen;
+
+  switch (roundsChosen) {
+  case 3:
+    playerObject.roundsWon = 2;
+    playerObject.roundsLost = 2;
+    break;
+  case 5:
+    playerObject.roundsWon = 3;
+    playerObject.roundsLost = 3;
+    break;
+  case 7:
+    playerObject.roundsWon = 4;
+    playerObject.roundsLost = 4;
+    break;
+  }
+}
+
+// STORES PLAYER DATA INTO LOCAL STORAGE
+function storePlayerInitial() {
+  // add array.splice to update playerObject in playerArray
+  console.log('playerArray before storage: ', playerArray.length);
+
+  var found = true;
+  for (var i = 0; i < playerArray.length; i++) {
+    if (playerArray[i].playerName === playerObject.playerName) {
+      found = false;
+      // console.log('Inside loop for player array length');
+      break;
+    }
+  }
+
+  // this part should only fire if player input name does NOT already exist in storage
+  if (found) {
+    playerArray.push(playerObject);
+    console.log('object pushed to array');
+  }
+
+  localStorage.setItem('playerArray', JSON.stringify(playerArray));
+  console.log('playerArray after storage: ', playerArray);
+}
+
+function storePlayerPostMatch() {
+  localStorage.setItem('playerArray', JSON.stringify(playerArray));
+}
+
+//FUNCTION TO DISPLAY GAME SCREEN
+//fires on NEXT BUTTON on ROUNDS screen
 function displayGameScreen(event) {
+  // console.log('You chose rounds and hit next');
+  // console.log('playerArray Data inside display game screen before hide', playerArray);
+
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
-  playerObject.roundsChosen = parseInt(event.target.roundValue.value);
-  console.log('playerObject: ', playerObject);
+  var roundsChosen = parseInt(event.target.roundValue.value);
+  // console.log('playerArray Data inside display game screen before rounds', playerArray);
+
+  roundCounter(roundsChosen);
+  // console.log('playerObject: ', playerObject);
+  // console.log('playerArray Data inside display game screen', playerArray);
+  storePlayerInitial();
+}
+
+// ^^ ====== ROUNDS SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+
+// =================================================== //
+// vv ====== GAME/ANIMATION/BATTLE SCREEN ====== vv //
+
+function fight(event){
+  event.preventDefault();
+  var cpuWeapon = cpuChoice();
+  var userWeapon = event.target.value;
+  console.log('userWeapon :' ,userWeapon);
+  console.log('cpuWeapon :' , cpuWeapon);
+  hide(gameScreen);
+  show(animationScreen);
+  var winner = compareWeapons(cpuWeapon, userWeapon);
+  declareWinner(userWeapon, cpuWeapon, winner);
+  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    incrementWinsData();
+    storePlayerPostMatch();
+    nextRoundPlayAgainButton.textContent = 'Play Again';
+  }
+  window.setTimeout(displayVictoryScreen, 100);
+  console.log('winner: ', winner);
+}
+
+var testVictory = document.getElementById('test-victory');
+
+function declareWinner (userWeapon, cpuWeapon, winner) {
+  if (winner === 'tie') {
+    // animate tie
+    testVictory.textContent = 'tie';
+  } else if (userWeapon === winner) {
+    // animate userWeapon victory
+    testVictory.textContent = 'User Wins';
+    playerObject.roundsWon--;
+  } else {
+    // animate cpuWeapon victory
+    testVictory.textContent = 'CPU Wins';
+    playerObject.roundsLost--;
+  }
+}
+
+function cpuChoice () {
+  var randomWeaponIndex = randomIndex(weaponArray.length);
+  var randomWeapon = weaponArray[randomWeaponIndex];
+  return randomWeapon;
+}
+
+// compare choices, maybe use Switch statement later?
+function compareWeapons (weaponX, weaponY) {
+  if ((weaponX === 'rock' && weaponY === 'paper')
+  || (weaponY === 'rock' && weaponX === 'paper') ) {
+    return 'paper';
+  }
+  if ((weaponX === 'rock' && weaponY === 'scissors')
+  || (weaponY === 'rock' && weaponX === 'scissors') ) {
+    return 'rock';
+  }
+  if ((weaponX === 'scissors' && weaponY === 'paper')
+  || (weaponY === 'scissors' && weaponX === 'paper') ) {
+    return 'scissors';
+  }
+  if ((weaponX === 'rock' && weaponY === 'rock')
+  || (weaponX === 'paper' && weaponY === 'paper')
+  || (weaponX === 'scissors' && weaponY === 'scissors')) {
+    return 'tie';
+  }
+}
+
+function displayVictoryScreen(){
+  hide(animationScreen);
+  show(victoryScreen);
+}
+
+// ^^ ====== GAME/ANIMATION/BATTLE SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+
+// =================================================== //
+// vv ====== VICTORY SCREEN ====== vv //
+
+// Function to determine the round end
+function handleNextRound() {
+  if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
+    playAgain();
+  } else {
+    nextRound();
+  }
+}
+
+function incrementWinsData () {
+  if(playerObject.roundsWon === 0) {
+    playerObject.totalGamesWon++;
+    if (playerObject.roundsChosen === 3) {
+      playerObject.bestOf3Wins++;
+    } else if (playerObject.roundsChosen === 5) {
+      playerObject.bestOf5Wins++;
+    } else {
+      playerObject.bestOf7Wins++;
+    }
+  }
+  playerObject.totalGamesPlayed++;
+}
+
+function playAgain () {
+  nextRoundPlayAgainButton.textContent = 'Next Round';
+  hide(victoryScreen);
+  show(roundsScreen);
+}
+
+function nextRound() {
+  hide(victoryScreen);
+  show(gameScreen);
+}
+
+// ^^ ====== VICTORY SCREEN ====== ^^ //
+// =================================================== //
+
+
+
+// =================================================== //
+// vv ====== HELPER FUNCTIONS ====== vv //
+function randomIndex(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 //function to hide
@@ -55,18 +286,7 @@ function hide(elem){
 function show(elem){
   elem.style.display = 'block';
 }
+// ^^ ====== HELPER FUNCTIONS ====== ^^ //
+// =================================================== //
 
 
-
-//FUNCTION TO CHECK FOR USER DATA
-function checkUserData(event) {
-  event.preventDefault();
-  var playerName = event.target.nameInput.value;
-  if (localStorage.getItem(playerName)) {
-    var getName = JSON.parse(localStorage.getItem(playerName));
-    playerObject = getName;
-  } else {
-    playerObject = new Player(playerName);
-  } console.log('player object is ',playerObject);
-}
-//FUNCTION TO CREATE CONSTRUCTOR OBJECT
