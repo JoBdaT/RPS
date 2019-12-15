@@ -17,6 +17,7 @@ var weaponButtonTwo = document.getElementById('weaponButtonTwo');
 var weaponButtonThree = document.getElementById('weaponButtonThree');
 var nextRoundPlayAgainButton = document.getElementById('next-round-button');
 
+
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
@@ -153,11 +154,11 @@ function displayGameScreen(event) {
 
 
 // =================================================== //
-// vv ====== GAME/ANIMATION/BATTLE SCREEN ====== vv //
+// vv ====== GAME SCREEN ====== vv //
 
 function fight(event){
   event.preventDefault();
-  var cpuWeapon = cpuChoice();
+  var cpuWeapon = 'rock'; // cpuChoice();
   var userWeapon = event.target.value;
   console.log('userWeapon :' ,userWeapon);
   console.log('cpuWeapon :' , cpuWeapon);
@@ -165,12 +166,13 @@ function fight(event){
   show(animationScreen);
   var winner = compareWeapons(cpuWeapon, userWeapon);
   declareWinner(userWeapon, cpuWeapon, winner);
+  draw(userWeapon, cpuWeapon);
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
     incrementWinsData();
     storePlayerPostMatch();
     nextRoundPlayAgainButton.textContent = 'Play Again';
   }
-  window.setTimeout(displayVictoryScreen, 100);
+  window.setTimeout(displayVictoryScreen, 2000);
   console.log('winner: ', winner);
 }
 
@@ -223,10 +225,61 @@ function displayVictoryScreen(){
   show(victoryScreen);
 }
 
-// ^^ ====== GAME/ANIMATION/BATTLE SCREEN ====== ^^ //
+// ^^ ====== GAME SCREEN ====== ^^ //
 // =================================================== //
 
+// =================================================== //
+// vv ====== ANIMATION SCREEN ====== vv //
 
+function draw(userWeapon, cpuWeapon) {
+  var stage = new createjs.Stage('canvas');
+
+  stage.autoClear = true;
+  stage.clear();
+  console.log('begin animation');
+  var userRock = new createjs.Shape();
+  userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
+  var cpuRock = new createjs.Shape();
+  cpuRock.graphics.beginFill('Red').drawCircle(0, 0, 50);
+
+  if (userWeapon === 'rock') {
+    userRock.x = 50;
+    userRock.y = 200;
+    stage.addChild(userRock);
+    if (cpuWeapon === 'rock') {
+      cpuRock.x = 450;
+      cpuRock.y = 200;
+      stage.addChild(cpuRock);
+
+      // userRock animation against cpuRock
+      createjs.Tween.get(userRock, { loop: false })
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 100);
+
+      // cpuRock animation against userRock
+      createjs.Tween.get(cpuRock, { loop: false })
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 100);
+
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+
+    }
+  }
+  console.log('end animation');
+}
+
+// ^^ ====== ANIMATION SCREEN ====== ^^ //
+// =================================================== //
 
 
 // =================================================== //
