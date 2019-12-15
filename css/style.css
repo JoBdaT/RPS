@@ -28,4 +28,33 @@ body {
  padding-top: 100px;
 }
 
+#column1,
+#column2,
+#column3 {
+  display: inline-block;
+}
 
+.pictureColumn {
+  width: 25%;
+  outline: 1px blue solid;
+}
+
+#column2 {
+  width: 40%;
+  outline: 1px solid green;
+}
+
+.imgBox {
+  outline: 1px solid red;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+}
+
+.imgBox > div {
+  width: 60px;
+  height: 100px;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 50%;
+}
