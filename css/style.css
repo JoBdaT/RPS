@@ -58,3 +58,8 @@ body {
   border: 1px solid black;
   border-radius: 50%;
 }
+
+#canvas {
+  margin: auto;
+  outline: 1px solid green;
+}
