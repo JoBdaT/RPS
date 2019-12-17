@@ -23,7 +23,7 @@
 
 [Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
 
-
+RESOURCES:
 How to determine if Javascript array contains an object with an attribute that equals a given value?
 https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
 
@@ -32,5 +32,10 @@ WindowOrWorkerGlobalScope.setTimeout()
 https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 
 
-switch statement reference
+Switch statement reference
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+
+
+EaselJS and TweenJS docs used in creating animations
+https://www.createjs.com/docs/easeljs/modules/EaselJS.html
+https://www.createjs.com/docs/tweenjs/modules/TweenJS.html
