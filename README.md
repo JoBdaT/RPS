@@ -38,27 +38,13 @@ Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we
 
 **Main Game Screen**
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors.
+The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selectedd their weapon by clickong the button of their weapon choice, the CPU weapon was selecteted randomly and stored as a variable. Fight feature dispjlayed the battel animation and 
 
  Display the front page to begin the fight
  A reset stats button
  Created animation for playing rock paper scissors
- Look into using the Pokemon API for this project
- Pivot the project from a Rock, Paper, Scissors game into a Pokemon Rock Paper Scissors game.
- Refactor game play logic
- Reposition left hand
- Change the name of the repository!
- Clean up Game play Logic
- Style Radio Buttons
- Look into getting more info from poke api
- Refactor Angular controllers
- Add Sweet alert to display game instructions in the beggining
- Write test before future development
- Fix positioning
- Add more styling to improve UI
- Fix temp solution to winning message being displayed more than once
- Add more pokemon to the types
- Create an Easter egg
+ 
+ 
 
 RESOURCES:
 
