@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 
 //GLOBAL VARIABLES
@@ -16,6 +17,12 @@ var weaponButtonOne = document.getElementById('weaponButtonOne');
 var weaponButtonTwo = document.getElementById('weaponButtonTwo');
 var weaponButtonThree = document.getElementById('weaponButtonThree');
 var nextRoundPlayAgainButton = document.getElementById('next-round-button');
+var uiScreen = document.getElementById('ui-screen');
+var playerNameUI = document.getElementById('playerNameUI');
+var cpuNameUI = document.getElementById('cpuNameUI');
+var roundUICount = document.getElementById('uiRoundsCount');
+var winLossUICount = document.getElementById('uiWinLossCount');
+
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
@@ -26,6 +33,7 @@ weaponButtonOne.addEventListener('click', fight);
 weaponButtonTwo.addEventListener('click', fight);
 weaponButtonThree.addEventListener('click', fight);
 nextRoundPlayAgainButton.addEventListener('click', handleNextRound);
+uiScreen.addEventListener('click', displayGameScreen);
 
 //PLAYER OBJECT
 var playerObject = {};
@@ -45,23 +53,52 @@ function Player (playerName) {
 }
 
 // =================================================== //
+// vv ====== UI ====== vv //
+
+function popNames() {
+  playerNameUI.textContent = `${playerObject.playerName}`;
+  cpuNameUI.textContent = 'CPU Enemy!';
+}
+
+function popUI() {
+  roundUICount.textContent = 'roundtest';
+  winLossUICount.textContent = 'winlosstest';
+}
+
+
+
+// vv ====== UI ====== vv //
+// =================================================== //
+
+// =================================================== //
 // vv ====== NAME SCREEN ====== vv //
 
 //FUNCTION TO CHECK FOR USER DATA
 function checkUserData(event) {
   event.preventDefault();
   var userNameInput = event.target.nameInput.value;
-  playerObject = new Player(userNameInput);
+  console.log('userNameInput: ', userNameInput);
+  // playerObject = new Player(userNameInput);
   // console.log('player object is ',playerObject);
 
   if (localStorage.getItem('playerArray')) {
-    var getArray = JSON.parse(localStorage.getItem('playerArray'));
-    playerArray = getArray;
+    console.log('playerArray exists');
+    playerArray = JSON.parse(localStorage.getItem('playerArray'));
+    console.log('playerArray:', playerArray);
+
     for (var i = 0; i < playerArray.length; i++) {
       if (userNameInput === playerArray[i].playerName) {
-        playerObject === playerArray[i];
+        console.log('playerObject before reassign:', playerObject);
+        console.log('playerArray[i]:', playerArray[i]);
+        playerObject = playerArray[i];
+        console.log('playerObject after reassign:', playerObject);
       }
     }
+  }
+
+  if (isEmpty(playerObject)) {
+    console.log('Creating new player');
+    playerObject = new Player(userNameInput);
   }
   // console.log('player object is ',playerObject);
 }
@@ -125,6 +162,12 @@ function storePlayerInitial() {
 }
 
 function storePlayerPostMatch() {
+  // for (var i = 0; i < playerArray.length; i++) {
+  //   if (playerObject.playerName === playerArray[i].playerName) {
+  //     playerArray.splice(i, 1, playerObject);
+  //     break;
+  //   }
+  // }
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
 }
 
@@ -137,6 +180,8 @@ function displayGameScreen(event) {
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
+  show(uiScreen);
+  popNames();
   var roundsChosen = parseInt(event.target.roundValue.value);
   // console.log('playerArray Data inside display game screen before rounds', playerArray);
 
@@ -153,7 +198,7 @@ function displayGameScreen(event) {
 
 
 // =================================================== //
-// vv ====== GAME/ANIMATION/BATTLE SCREEN ====== vv //
+// vv ====== GAME SCREEN ====== vv //
 
 function fight(event){
   event.preventDefault();
@@ -165,17 +210,20 @@ function fight(event){
   show(animationScreen);
   var winner = compareWeapons(cpuWeapon, userWeapon);
   declareWinner(userWeapon, cpuWeapon, winner);
+  draw(userWeapon, cpuWeapon);
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
     incrementWinsData();
     storePlayerPostMatch();
     nextRoundPlayAgainButton.textContent = 'Play Again';
   }
-  window.setTimeout(displayVictoryScreen, 100);
+  window.setTimeout(displayVictoryScreen, 2500);
   console.log('winner: ', winner);
 }
 
 var testVictory = document.getElementById('test-victory');
 
+
+// get rid of this function and incorporate the display into draw()
 function declareWinner (userWeapon, cpuWeapon, winner) {
   if (winner === 'tie') {
     // animate tie
@@ -223,10 +271,347 @@ function displayVictoryScreen(){
   show(victoryScreen);
 }
 
-// ^^ ====== GAME/ANIMATION/BATTLE SCREEN ====== ^^ //
+// ^^ ====== GAME SCREEN ====== ^^ //
 // =================================================== //
 
+// =================================================== //
+// vv ====== ANIMATION SCREEN ====== vv //
 
+function draw(userWeapon, cpuWeapon) {
+  var stage = new createjs.Stage('canvas');
+
+  stage.autoClear = true;
+  stage.clear();
+  console.log('begin animation');
+  var userRock = new createjs.Shape();
+  userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
+  var cpuRock = new createjs.Shape();
+  cpuRock.graphics.beginFill('Red').drawCircle(0, 0, 50);
+  var userPaper = new createjs.Shape();
+  userPaper.graphics.beginFill('DeepSkyBlue').drawRect(0, 0, 95, 110);
+  var cpuPaper = new createjs.Shape();
+  cpuPaper.graphics.beginFill('Red').drawRect(0, 0, 95, 110);
+  var userScissors = new createjs.Shape();
+  userScissors.graphics.beginFill('DeepSkyBlue').drawPolyStar(0, 0, 1.5, 5, 35);
+  var cpuScissors = new createjs.Shape();
+  cpuScissors.graphics.beginFill('Red').drawPolyStar(0, 0, 1.5, 5, -35);
+
+
+  if (userWeapon === 'rock') {
+    userRock.x = 50;
+    userRock.y = 200;
+    stage.addChild(userRock);
+
+    if (cpuWeapon === 'rock') {
+      cpuRock.x = 450;
+      cpuRock.y = 200;
+      stage.addChild(cpuRock);
+
+      // userRock animation against cpuRock
+      createjs.Tween.get(userRock, { loop: false })
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      // cpuRock animation against userRock
+      createjs.Tween.get(cpuRock, { loop: false })
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+    }
+
+    if (cpuWeapon === 'paper') {
+      cpuPaper.x = 450;
+      cpuPaper.y = 140;
+      stage.addChild(cpuPaper);
+
+      createjs.Tween.get(userRock, { loop: false })
+        .to({x: 200 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({x: -50, y: -50}, 300, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 200);
+
+      createjs.Tween.get(cpuPaper, { loop: false })
+        .to({ x: 250 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+    }
+
+    if (cpuWeapon === 'scissors') {
+      cpuScissors.x = 450;
+      cpuScissors.y = 200;
+      stage.addChild(cpuScissors);
+
+      createjs.Tween.get(userRock, { loop: false })
+        .to({ x: 200 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 190 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuScissors, { loop: false })
+        .to({ x: 310 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 320 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 320 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 500, y: -50}, 400, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 400);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+    }
+
+    // createjs.Ticker.framerate = 60;
+    // createjs.Ticker.addEventListener('tick', stage);
+  }
+  if (userWeapon === 'paper') {
+    userPaper.x = 50;
+    userPaper.y = 140;
+    stage.addChild(userPaper);
+
+    if (cpuWeapon === 'paper') {
+      cpuPaper.x = 450;
+      cpuPaper.y = 140;
+      stage.addChild(cpuPaper);
+
+      createjs.Tween.get(userPaper, { loop: false })
+        .to({ x: 150 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuPaper, { loop: false })
+        .to({ x: 250 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+    }
+
+    if (cpuWeapon === 'rock') {
+      cpuRock.x = 450;
+      cpuRock.y = 200;
+      stage.addChild(cpuRock);
+
+      createjs.Tween.get(userPaper, { loop: false })
+        .to({ x: 150 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuRock, { loop: false })
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        // .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 600, y: -50}, 100, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 100);
+    }
+
+    if (cpuWeapon === 'scissors') {
+      cpuScissors.x = 450;
+      cpuScissors.y = 200;
+      stage.addChild(cpuScissors);
+
+      createjs.Tween.get(userPaper, { loop: false })
+        .to({ x: 150 }, 1000, createjs.Ease.getPowInOut(4)) // meet
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4)) // 1
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4)) // 2 swing
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4)) // 3
+        .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4)) // 4 swing
+        .to({ x: 140 }, 50, createjs.Ease.getPowInOut(4)) // 5
+        // .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4)) // 6 swing
+        .to({ x: -50, y: -50 }, 50, createjs.Ease.getPowInOut(4)) //
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuScissors, { loop: false })
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(4)) // meet
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4)) // 1
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4)) // 2 swing
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4)) // 3
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4)) // 4 swing
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4)) // 5
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4)) // 6 // hit away
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 400);
+
+    }
+
+    // createjs.Ticker.framerate = 60;
+    // createjs.Ticker.addEventListener('tick', stage);
+
+  }
+  if (userWeapon === 'scissors') {
+    userScissors.x = 50;
+    userScissors.y = 200;
+    stage.addChild(userScissors);
+
+    if (cpuWeapon === 'scissors') {
+      cpuScissors.x = 450;
+      cpuScissors.y = 200;
+      stage.addChild(cpuScissors);
+
+      createjs.Tween.get(userScissors, { loop: false })
+        .to({ x: 210 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuScissors, { loop: false })
+        .to({ x: 310 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 320 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 320 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+
+    }
+
+    if (cpuWeapon === 'rock') {
+      cpuRock.x = 450;
+      cpuRock.y = 200;
+      stage.addChild(cpuRock);
+
+      createjs.Tween.get(userScissors, { loop: false })
+        .to({ x: 210 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: -50, y: -50 }, 400, createjs.Ease.getPowInOut(4))
+        // .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0 }, 100);
+
+      createjs.Tween.get(cpuRock, { loop: false })
+        .to({ x: 300 }, 1000, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 310 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+    }
+
+    if (cpuWeapon === 'paper') {
+      cpuPaper.x = 450;
+      cpuPaper.y = 140;
+      stage.addChild(cpuPaper);
+
+      createjs.Tween.get(userScissors, { loop: false })
+        .to({ x: 210 }, 1000, createjs.Ease.getPowInOut(4)) // meet
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4)) // hit
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4)) // hit
+        .to({ x: 200 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4)) // win
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ alpha: 0.5 }, 400)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 400);
+
+      createjs.Tween.get(cpuPaper, { loop: false })
+        .to({ x: 250 }, 1000, createjs.Ease.getPowInOut(4)) // meet
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4)) // hit
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4)) // hit
+        .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        // .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
+        // .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
+        .to({ x: 600, y: -50 }, 400, createjs.Ease.getPowInOut(4)) // fly away
+        .to({ alpha: 0 }, 50);
+
+      createjs.Ticker.framerate = 60;
+      createjs.Ticker.addEventListener('tick', stage);
+
+    }
+
+    // createjs.Ticker.framerate = 60;
+    // createjs.Ticker.addEventListener('tick', stage);
+
+  }
+
+  createjs.Ticker.framerate = 60;
+  createjs.Ticker.addEventListener('tick', stage);
+
+  console.log('end animation');
+}
+
+// ^^ ====== ANIMATION SCREEN ====== ^^ //
+// =================================================== //
 
 
 // =================================================== //
@@ -258,6 +643,7 @@ function incrementWinsData () {
 function playAgain () {
   nextRoundPlayAgainButton.textContent = 'Next Round';
   hide(victoryScreen);
+  hide(uiScreen);
   show(roundsScreen);
 }
 
@@ -285,6 +671,14 @@ function hide(elem){
 //function to show
 function show(elem){
   elem.style.display = 'block';
+}
+
+function isEmpty(obj) {
+  for(var key in obj) {
+    if(obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
 }
 // ^^ ====== HELPER FUNCTIONS ====== ^^ //
 // =================================================== //

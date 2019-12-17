@@ -1,3 +1,54 @@
+header {
+  width: 60%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+nav {
+  margin-bottom: 110px;
+  font-family: 'Permanent Marker', cursive;
+  /* font-family: 'Archivo Black', sans-serif;
+  font-family: 'Alfa Slab One', cursive; */
+}
+
+#gamePage,
+#aboutUsPage,
+#highScoresPage {
+  /* background-color: rgb(178, 185, 82); */
+  color: rgb(109, 106, 106);
+  background-image:url(/images/background-for-RSP.jpg) ;
+}
+#rounds-screen.info-screen {
+  background-color: rgba(58, 230, 15, 0.137);
+  
+}
+
+#rpsTitle {
+  font-family: 'Sigmar One', cursive ; font-size: 40px;
+  /* font-family: 'Permanent Marker', cursive; */
+  /* font-size: large; */
+  padding-bottom: 5px;
+}
+#choose-Round{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  color: rgb(255,255,255);
+  /* margin-top: 69px; */
+  
+}
+#roundValue{
+  /* margin-top: 40px; */
+}
+
+#aboutUs {
+  float: left;
+  margin-top: 40px;
+}
+
+#highScores {
+  float: right;
+  margin-top: 40px;
+}
+
 body {
   background-color: whitesmoke;
   width: 80%;
@@ -8,24 +59,58 @@ body {
 #rounds-screen,
 #main-game-screen,
 #animation-screen,
-#victory-screen {
+#victory-screen,
+#ui-screen{
   display: none;
+  margin: auto;
 }
 
 .info-screen {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 375px;
   margin: auto;
   outline: solid gray 1px;
 }
 
+.game-screen {
+  width: 500px;
+  height: 375px;
+  margin: auto;
+  outline: solid purple 1px;
+}
+
+.ui-screen {
+  width: 500px;
+  padding-top: 15px;
+  color: white;
+}
+
+.uiRounds {
+  font-family: 'Permanent Marker', cursive;
+  float: left;
+}
+
+.uiWinLoss {
+  font-family: 'Permanent Marker', cursive;
+  float: right;
+}
+
 #name-form {
   line-height: 300px;
+  color: rgb(255,255,255);
+}
+
+#name-form{
+  background-color: rgba(58, 230, 15, 0.137);
+  /* margin-top: 69px; */
+  
+
 }
 
 #rounds-form {
- outline: 1px blue solid;
- padding-top: 100px;
+  outline: 1px blue solid;
+  /* padding-top: 100px; */
+  vertical-align: middle;
 }
 
 #column1,
@@ -44,17 +129,38 @@ body {
   outline: 1px solid green;
 }
 
+.aboutUsImg > img {
+  width: 80px;
+  margin: auto;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.imgBox > a {
+  display: block;
+  font-size: small;
+}
+
 .imgBox {
   outline: 1px solid red;
-  width: 50%;
-  height: 200px;
+  /* width: 50%; */
+  /* height: 200px; */
   margin: auto;
+  padding-top: 10px;
 }
 
 .imgBox > div {
-  width: 60px;
-  height: 100px;
+  width: 80px;
+  height: 120px;
   margin: auto;
   border: 1px solid black;
-  border-radius: 50%;
+}
+
+#canvas {
+  margin: auto;
+  outline: 1px solid green;
+}
+a {
+  color: white;
+  
 }

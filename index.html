@@ -6,12 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Rock, Paper, Scissors</title>
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Archivo+Black|Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+  <title >Rock, Paper, Scissors</title>
 </head>
-<body>
+<body id="gamePage">
   <header>
-    <h1>Title</h1>
+    <h1 id="rpsTitle" class="nav"><a href="index.html">Rock, Paper, Scissors</a></h1>
+    
+    <nav>
+      <h1 id="aboutUs" class="nav"><a href="/aboutUs.html">About Us</a></h1>
+      <h1 id="highScores" class="nav"><a href="/highscores.html">High Scores</a></h1>
+    </nav>
   </header>
+
   <section id="name-screen" class="info-screen">
     <form id="name-form">
       <label>Name</label>
@@ -22,7 +30,7 @@
 
   <section id="rounds-screen" class="info-screen">
     <form id="roundsform">
-      <p>Choose how many rounds you would like to play</p>
+      <p id="choose-Round">Choose how many rounds you would like to play</p>
       <select id="roundValue">
         <option value=3>3</option>
         <option value=5>5</option>
@@ -34,6 +42,9 @@
   </section>
 
   <section id="main-game-screen" class="game-screen">
+    <section>
+
+    </section>
     <button id="weaponButtonOne" type="button" class="weapon-button" value="rock">Rock</button>
     <button id="weaponButtonTwo" type="button" class="weapon-button" value="scissors">Scissors</button>
     <button id="weaponButtonThree" type="button" class="weapon-button" value="paper">Paper</button>
@@ -42,15 +53,35 @@
 
   <section id="animation-screen" class="game-screen">
     <p>ANIMATION SCREEN</p>
+    <canvas id="canvas" width="500" height="375">
 
+    </canvas>
   </section>
 
   <section id="victory-screen" class="game-screen">
     <P>VICTORY SCREEN</P>
     <p id="test-victory"></p>
     <button id="next-round-button" type="button">Next Round</button>
-
   </section>
+  <section id="ui-screen" class="ui-screen"> 
+    <!-- UIROUNDS -->
+        <p id="uiRounds" class="uiRounds">Rounds</p>
+        <br/>
+        <p id="uiRoundsCount" class="uiRounds">test</p>
+        <!-- UI WINLOSS -->
+        <p id="uiWinLoss" class="uiWinLoss">Wins/Losses</p>
+        <br/>
+        <p id="uiWinLossCount" class="uiWinLoss">test</p>
+
+
+        <p id="playerNameUI"></p>
+        <p id="cpuNameUI"></p>
+  
+    </section>
+
   <script src="js/app.js"></script>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
+
 </body>
 </html>
