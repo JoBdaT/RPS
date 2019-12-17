@@ -36,6 +36,10 @@ The first page is a form to create a user data/profile. The checkUser function w
 
 Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would takw the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
 
+**Main Game Screen**
+
+The screen featured the weapons choice buttons, Rock, Paper, Scissors.
+
  Display the front page to begin the fight
  A reset stats button
  Created animation for playing rock paper scissors
@@ -78,4 +82,5 @@ https://www.createjs.com/docs/easeljs/modules/EaselJS.html
 https://www.createjs.com/docs/tweenjs/modules/TweenJS.html
 
 How to check if JavaScript Object is empty (Example)
+
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
