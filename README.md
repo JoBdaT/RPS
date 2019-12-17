@@ -28,11 +28,11 @@ The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the 
 
 ## Features:
 
-**Name Entry
+**Name Entry**
 
 The first page was a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
 
-**Round Select Screen
+**Round Select Screen**
 
 Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would takw the player back to the name selection screen, essentially to start the game over. the rounds data was put into a constructor which moved it to a player constructor object 
 
