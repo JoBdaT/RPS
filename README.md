@@ -26,6 +26,14 @@
 The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
 The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mantioned at the end of this readme.
 
+# Purpose: 
+
+For entertainment and amusement.
+
+**Authors:**  Clayton Jones, Daniel Nguyen, Thomas Bhagirath Bhatt
+**Last Updated:** December 03, 2019
+**Deployed Site:** [Link]()
+
 ## Features:
 
 **Name Entry**
