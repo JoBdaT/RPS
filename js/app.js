@@ -283,18 +283,37 @@ function draw(userWeapon, cpuWeapon) {
   stage.autoClear = true;
   stage.clear();
   console.log('begin animation');
-  var userRock = new createjs.Shape();
-  userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
-  var cpuRock = new createjs.Shape();
-  cpuRock.graphics.beginFill('Red').drawCircle(0, 0, 50);
-  var userPaper = new createjs.Shape();
-  userPaper.graphics.beginFill('DeepSkyBlue').drawRect(0, 0, 95, 110);
-  var cpuPaper = new createjs.Shape();
-  cpuPaper.graphics.beginFill('Red').drawRect(0, 0, 95, 110);
-  var userScissors = new createjs.Shape();
-  userScissors.graphics.beginFill('DeepSkyBlue').drawPolyStar(0, 0, 1.5, 5, 35);
-  var cpuScissors = new createjs.Shape();
-  cpuScissors.graphics.beginFill('Red').drawPolyStar(0, 0, 1.5, 5, -35);
+  // var userRock = new createjs.Shape();
+  // userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
+  // var cpuRock = new createjs.Shape();
+  // cpuRock.graphics.beginFill('Red').drawCircle(0, 0, 50);
+  // var userPaper = new createjs.Shape();
+  // userPaper.graphics.beginFill('DeepSkyBlue').drawRect(0, 0, 95, 110);
+  // var cpuPaper = new createjs.Shape();
+  // cpuPaper.graphics.beginFill('Red').drawRect(0, 0, 95, 110);
+  // var userScissors = new createjs.Shape();
+  // userScissors.graphics.beginFill('DeepSkyBlue').drawPolyStar(0, 0, 1.5, 5, 35);
+  // var cpuScissors = new createjs.Shape();
+  // cpuScissors.graphics.beginFill('Red').drawPolyStar(0, 0, 1.5, 5, -35);
+
+  var userRock = new createjs.Bitmap('../images/rock2.png');
+  userRock.scaleX = 0.15;
+  userRock.scaleY = 0.15;
+  var cpuRock = new createjs.Bitmap('../images/rock2.png');
+  cpuRock.scaleX = 0.15;
+  cpuRock.scaleY = 0.15;
+  var userPaper = new createjs.Bitmap('../images/paper2.png');
+  userPaper.scaleX = 0.15;
+  userPaper.scaleY = 0.15;
+  var cpuPaper = new createjs.Bitmap('../images/paper2.png');
+  cpuPaper.scaleX = 0.15;
+  cpuPaper.scaleY = 0.15;
+  var userScissors = new createjs.Bitmap('../images/scissors2.png');
+  userScissors.scaleX = 0.15;
+  userScissors.scaleY = 0.15;
+  var cpuScissors = new createjs.Bitmap('../images/scissors2.png');
+  cpuScissors.scaleX = 0.15;
+  cpuScissors.scaleY = 0.15;
 
 
   if (userWeapon === 'rock') {
