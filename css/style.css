@@ -99,3 +99,8 @@ body {
   margin: auto;
   border: 1px solid black;
 }
+
+#canvas {
+  margin: auto;
+  outline: 1px solid green;
+}
