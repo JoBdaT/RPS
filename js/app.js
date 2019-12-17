@@ -53,17 +53,28 @@ function Player (playerName) {
 function checkUserData(event) {
   event.preventDefault();
   var userNameInput = event.target.nameInput.value;
-  playerObject = new Player(userNameInput);
+  console.log('userNameInput: ', userNameInput);
+  // playerObject = new Player(userNameInput);
   // console.log('player object is ',playerObject);
 
   if (localStorage.getItem('playerArray')) {
-    var getArray = JSON.parse(localStorage.getItem('playerArray'));
-    playerArray = getArray;
+    console.log('playerArray exists');
+    playerArray = JSON.parse(localStorage.getItem('playerArray'));
+    console.log('playerArray:', playerArray);
+
     for (var i = 0; i < playerArray.length; i++) {
       if (userNameInput === playerArray[i].playerName) {
-        playerObject === playerArray[i];
+        console.log('playerObject before reassign:', playerObject);
+        console.log('playerArray[i]:', playerArray[i]);
+        playerObject = playerArray[i];
+        console.log('playerObject after reassign:', playerObject);
       }
     }
+  }
+
+  if (isEmpty(playerObject)) {
+    console.log('Creating new player');
+    playerObject = new Player(userNameInput);
   }
   // console.log('player object is ',playerObject);
 }
@@ -127,6 +138,12 @@ function storePlayerInitial() {
 }
 
 function storePlayerPostMatch() {
+  // for (var i = 0; i < playerArray.length; i++) {
+  //   if (playerObject.playerName === playerArray[i].playerName) {
+  //     playerArray.splice(i, 1, playerObject);
+  //     break;
+  //   }
+  // }
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
 }
 
@@ -627,6 +644,14 @@ function hide(elem){
 //function to show
 function show(elem){
   elem.style.display = 'block';
+}
+
+function isEmpty(obj) {
+  for(var key in obj) {
+    if(obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
 }
 // ^^ ====== HELPER FUNCTIONS ====== ^^ //
 // =================================================== //
