@@ -31,7 +31,9 @@ The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the 
 For entertainment and amusement.
 
 **Authors:**  Clayton Jones, Daniel Nguyen, Thomas Bhagirath Bhatt
-**Last Updated:** December 03, 2019
+
+**Last Updated:** December 16, 2019
+
 **Deployed Site:** [Link]()
 
 ## Features:
@@ -39,6 +41,8 @@ For entertainment and amusement.
 **Name Entry**
 
 The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
+
+
 
 **Round Select Screen**
 
