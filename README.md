@@ -30,11 +30,11 @@ The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the 
 
 **Name Entry**
 
-The first page was a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
+The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
 
 **Round Select Screen**
 
-Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would takw the player back to the name selection screen, essentially to start the game over. the rounds data was put into a constructor which moved it to a player constructor object 
+Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would takw the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
 
  Display the front page to begin the fight
  A reset stats button
@@ -63,13 +63,20 @@ https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array
 
 
 WindowOrWorkerGlobalScope.setTimeout()
+
 https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 
 
 Switch statement reference
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
 
 
 EaselJS and TweenJS docs used in creating animations
+
 https://www.createjs.com/docs/easeljs/modules/EaselJS.html
 https://www.createjs.com/docs/tweenjs/modules/TweenJS.html
+
+How to check if JavaScript Object is empty (Example)
+
+https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
