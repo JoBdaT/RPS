@@ -1,3 +1,30 @@
+header {
+  width: 60%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+nav {
+  margin-bottom: 20px;
+  font-family: 'Permanent Marker', cursive;
+  /* font-family: 'Archivo Black', sans-serif;
+  font-family: 'Alfa Slab One', cursive; */
+}
+
+#rpsTitle {
+  font-family: 'Permanent Marker', cursive;
+  font-size: large;
+  padding-bottom: 5px;
+}
+
+#aboutUs {
+  float: left;
+}
+
+#highScores {
+  float: right;
+}
+
 body {
   background-color: whitesmoke;
   width: 80%;
@@ -10,6 +37,7 @@ body {
 #animation-screen,
 #victory-screen {
   display: none;
+  margin: auto;
 }
 
 .info-screen {
@@ -26,6 +54,7 @@ body {
 #rounds-form {
  outline: 1px blue solid;
  padding-top: 100px;
+ vertical-align: middle;
 }
 
 #column1,
@@ -49,6 +78,7 @@ body {
   width: 50%;
   height: 200px;
   margin: auto;
+  padding-top: 10px;
 }
 
 .imgBox > div {
