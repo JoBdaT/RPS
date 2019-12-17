@@ -5,24 +5,50 @@ header {
 }
 
 nav {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-family: 'Permanent Marker', cursive;
   /* font-family: 'Archivo Black', sans-serif;
   font-family: 'Alfa Slab One', cursive; */
 }
 
+#gamePage{
+  /* background-color: rgb(178, 185, 82); */
+  color: rgb(109, 106, 106);
+  background-image:url(/images/background-for-RSP.jpg) ;
+}
+#rounds-screen.info-screen {
+  background-color: rgba(58, 230, 15, 0.137);
+  
+}
+
+
 #rpsTitle {
-  font-family: 'Permanent Marker', cursive;
-  font-size: large;
+  font-family: 'Sigmar One', cursive ; font-size: 40px;
+  /* font-family: 'Permanent Marker', cursive; */
+  /* font-size: large; */
   padding-bottom: 5px;
 }
+#choose-Round{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  color: rgb(255,255,255);
+  margin-top: 69px;
+  
+
+}
+#roundValue{
+  margin-top: 40px;
+}
+
+
 
 #aboutUs {
   float: left;
+  margin-top: 40px;
 }
 
 #highScores {
   float: right;
+  margin-top: 40px;
 }
 
 body {
@@ -72,6 +98,13 @@ body {
 
 #name-form {
   line-height: 300px;
+  color: rgb(255,255,255);
+}
+#name-form{
+  background-color: rgba(58, 230, 15, 0.137);
+  margin-top: 69px;
+  
+
 }
 
 #rounds-form {
@@ -126,4 +159,8 @@ body {
 #canvas {
   margin: auto;
   outline: 1px solid green;
+}
+a {
+  color: white;
+  
 }
