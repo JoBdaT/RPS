@@ -16,6 +16,11 @@ var weaponButtonOne = document.getElementById('weaponButtonOne');
 var weaponButtonTwo = document.getElementById('weaponButtonTwo');
 var weaponButtonThree = document.getElementById('weaponButtonThree');
 var nextRoundPlayAgainButton = document.getElementById('next-round-button');
+var uiScreen = document.getElementById('ui-screen');
+var playerNameUI = document.getElementById('playerNameUI');
+var cpuNameUI = document.getElementById('cpuNameUI');
+var roundUICount = document.getElementById('uiRoundsCount');
+var winLossUICount = document.getElementById('uiWinLossCount');
 
 
 //EVENT LISTENERS
@@ -27,6 +32,7 @@ weaponButtonOne.addEventListener('click', fight);
 weaponButtonTwo.addEventListener('click', fight);
 weaponButtonThree.addEventListener('click', fight);
 nextRoundPlayAgainButton.addEventListener('click', handleNextRound);
+uiScreen.addEventListener('click', displayGameScreen);
 
 //PLAYER OBJECT
 var playerObject = {};
@@ -44,6 +50,24 @@ function Player (playerName) {
   this.totalGamesWon = 0;
   this.settings = [];
 }
+
+// =================================================== //
+// vv ====== UI ====== vv //
+
+function popNames() {
+  playerNameUI.textContent = `${playerObject.playerName}`;
+  cpuNameUI.textContent = 'CPU Enemy!';
+}
+
+function popUI() {
+  roundUICount.textContent = 'roundtest';
+  winLossUICount.textContent = 'winlosstest';
+}
+
+
+
+// vv ====== UI ====== vv //
+// =================================================== //
 
 // =================================================== //
 // vv ====== NAME SCREEN ====== vv //
@@ -138,6 +162,8 @@ function displayGameScreen(event) {
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
+  show(uiScreen);
+  popNames();
   var roundsChosen = parseInt(event.target.roundValue.value);
   // console.log('playerArray Data inside display game screen before rounds', playerArray);
 
@@ -599,6 +625,7 @@ function incrementWinsData () {
 function playAgain () {
   nextRoundPlayAgainButton.textContent = 'Next Round';
   hide(victoryScreen);
+  hide(uiScreen);
   show(roundsScreen);
 }
 

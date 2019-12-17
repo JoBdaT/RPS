@@ -35,16 +35,39 @@ body {
 #rounds-screen,
 #main-game-screen,
 #animation-screen,
-#victory-screen {
+#victory-screen,
+#ui-screen{
   display: none;
   margin: auto;
 }
 
 .info-screen {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 375px;
   margin: auto;
   outline: solid gray 1px;
+}
+
+.game-screen {
+  width: 500px;
+  height: 375px;
+  margin: auto;
+  outline: solid purple 1px;
+}
+
+.ui-screen {
+  width: 500px;
+  padding-top: 15px;
+}
+
+.uiRounds {
+  font-family: 'Permanent Marker', cursive;
+  float: left;
+}
+
+.uiWinLoss {
+  font-family: 'Permanent Marker', cursive;
+  float: right;
 }
 
 #name-form {
