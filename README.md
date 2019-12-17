@@ -78,5 +78,4 @@ https://www.createjs.com/docs/easeljs/modules/EaselJS.html
 https://www.createjs.com/docs/tweenjs/modules/TweenJS.html
 
 How to check if JavaScript Object is empty (Example)
-
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
