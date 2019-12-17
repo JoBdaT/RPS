@@ -52,9 +52,9 @@ body {
 }
 
 #rounds-form {
- outline: 1px blue solid;
- padding-top: 100px;
- vertical-align: middle;
+  outline: 1px blue solid;
+  padding-top: 100px;
+  vertical-align: middle;
 }
 
 #column1,
@@ -73,18 +73,29 @@ body {
   outline: 1px solid green;
 }
 
+.aboutUsImg > img {
+  width: 80px;
+  margin: auto;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.imgBox > a {
+  display: block;
+  font-size: small;
+}
+
 .imgBox {
   outline: 1px solid red;
-  width: 50%;
-  height: 200px;
+  /* width: 50%; */
+  /* height: 200px; */
   margin: auto;
   padding-top: 10px;
 }
 
 .imgBox > div {
-  width: 60px;
-  height: 100px;
+  width: 80px;
+  height: 120px;
   margin: auto;
   border: 1px solid black;
-  border-radius: 50%;
 }
