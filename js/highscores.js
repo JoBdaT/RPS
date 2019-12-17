@@ -6,6 +6,8 @@ var debug = true;
 var playerArray = [];
 var inOrderArray = [];
 
+var tableHeaders = ['Name', 'Score'];
+
 // DOM ELEMENTS
 var table = document.getElementById('highscore-table');
 var noPlayers = document.getElementById('no-players');
@@ -21,6 +23,7 @@ function getStorage() {
       console.log('playerArray: ', playerArray);
     }
     highToLowArray(playerArray);
+    createTable();
   } else {
     if (debug) {
       console.log('no player data');
@@ -30,12 +33,17 @@ function getStorage() {
 }
 
 function highToLowArray(arr) {
-  var name = '';
-  var score = 0;
-  var highPlayerIndex = 0;
-
 
   while (arr.length > 0) {
+    var name = '';
+    var score = 0;
+    var highPlayerIndex = 0;
+
+    if (debug) {
+      console.log('entered while loop');
+      console.log('arr.length:', arr.length);
+    }
+
     // going through arr to find player with current highest score
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].totalGamesWon > score) {
@@ -51,6 +59,32 @@ function highToLowArray(arr) {
       console.log('arr.length: ', arr.length);
     }
   }
+}
+
+function createTable() {
+  var tHeadEl = document.createElement('thead');
+
+  for (var i = 0; i < tableHeaders.length; i++) {
+    createElem('th', tHeadEl, tableHeaders[i]);
+    // var thEl = document.createElement('th');
+    // thEl.textContent = tableHeaders[i];
+    // tHeadEl.appendChild(thEl);
+  }
+
+  table.appendChild(tHeadEl);
+
+  for (i = 0; i < inOrderArray.length; i++) {
+    var trEl = document.createElement('tr');
+    createElem('td', trEl, inOrderArray[i].playerName);
+    createElem('td', trEl, inOrderArray[i].totalGamesWon);
+    table.appendChild(trEl);
+  }
+}
+
+function createElem(elem, parent, content) {
+  var el = document.createElement(elem);
+  el.textContent = content;
+  parent.appendChild(el);
 }
 
 getStorage();
