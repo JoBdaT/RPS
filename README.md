@@ -80,7 +80,7 @@ The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user 
 
 image of code 
 
-## RESOURCES:
+# RESOURCES:
 
 How to determine if Javascript array contains an object with an attribute that equals a given value?
 https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
@@ -108,11 +108,6 @@ https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
 **Font High Score and About Me**
 
 https://fonts.google.com/
-link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Sigmar+One&display=swap" rel="stylesheet"
-Font-family: 'Share Tech Mono', monospace;
-
-link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet"
-Font-family: 'Sigmar One', cursive;
 
 Background image
 https://www.google.com/search?q=best+background+pictures+for+game&sxsrf=ACYBGNSzQ2O98-b9l_SnYGFcZHkxa6qGnw:1576552491157&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiIz9HZ27vmAhXLPn0KHRYRC08Q_AUoAXoECA0QAw&biw=1203&bih=674#imgdii=Fu0SIuAtcs6XLM:&imgrc=7cb7tAJd3PzJ0M:
