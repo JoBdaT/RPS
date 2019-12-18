@@ -98,6 +98,8 @@ body {
 .uiName {
   font-family: 'Permanent Marker', cursive;
   margin: auto;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
 

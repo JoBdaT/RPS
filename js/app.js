@@ -53,6 +53,7 @@ function Player (playerName) {
   this.countRound = 0;
   this.countWin = 0;
   this.countLoss = 0;
+  this.countTie = 0;
 }
 
 // =================================================== //
@@ -65,11 +66,7 @@ function popNames() {
 
 function popUI() {
   roundUICount.textContent = `Round ${playerObject.countRound} of ${playerObject.roundsChosen}`;
-  winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses`;
-}
-
-function clearUI() {
-
+  winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses & ${playerObject.countTie} Ties`;
 }
 
 // vv ====== UI ====== vv //
@@ -133,6 +130,7 @@ function roundCounter (roundsChosen) {
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
     playerObject.countRound = 0;
+    playerObject.countTie = 0;
     break;
   case 5:
     playerObject.roundsWon = 3;
@@ -140,6 +138,7 @@ function roundCounter (roundsChosen) {
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
     playerObject.countRound = 0;
+    playerObject.countTie = 0;
     break;
   case 7:
     playerObject.roundsWon = 4;
@@ -147,6 +146,7 @@ function roundCounter (roundsChosen) {
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
     playerObject.countRound = 0;
+    playerObject.countTie = 0;
     break;
   }
 }
@@ -195,9 +195,11 @@ function displayGameScreen(event) {
   hide(roundsScreen);
   show(gameScreen);
   show(uiScreen);
+  // adding test for remove event listener on UI
+  uiScreen.removeEventListener('click', displayGameScreen);
   var roundsChosen = parseInt(event.target.roundValue.value);
   // console.log('playerArray Data inside display game screen before rounds', playerArray);
-  
+
   roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
   // console.log('playerArray Data inside display game screen', playerArray);
@@ -243,6 +245,7 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
   if (winner === 'tie') {
     // animate tie
     testVictory.textContent = 'tie';
+    playerObject.countTie++;
   } else if (userWeapon === winner) {
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
