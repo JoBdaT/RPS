@@ -58,11 +58,19 @@ After Win, Loss, or Tie is determined, you can click "next" to play the next rou
 
 **Name Entry**
 
-The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
+The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.image of code
+
+**function player data**
+
+add image of code
 
 **Round Select Screen**
 
 Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would take the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
+
+**round counter**
+
+add image
 
 **Main Game Screen**
 
@@ -82,7 +90,18 @@ image of code
 
 **Fight Screen**
 
-image of code
+add code img
+
+**image of code testing** 
+
+add img code
+
+**animation screen**
+
+add code img
+
+**logic**
+code img line 342 -406
 
 ### RESOURCES:
 
