@@ -5,7 +5,7 @@ header {
 }
 
 nav {
-  margin-bottom: 110px;
+  margin-bottom: 100px;
   font-family: 'Permanent Marker', cursive;
   /* font-family: 'Archivo Black', sans-serif;
   font-family: 'Alfa Slab One', cursive; */
@@ -19,7 +19,7 @@ nav {
   background-image:url(/images/background-for-RSP.jpg) ;
 }
 #rounds-screen.info-screen {
-  background-color: rgba(58, 230, 15, 0.137);
+  background-color: rgba(245, 166, 77, 0.452);
   
 }
 
@@ -176,10 +176,10 @@ a>nav>#rps-aboutUs {
 
 }
 section#name-screen.info-screen{
-  background-color: rgba(58, 230, 15, 0.082);
+  background-color: rgba(245, 166, 77, 0.452);
 }
 section#main-game-screen.game-screen{
-  background-color: rgba(58, 230, 15, 0.082);
+  background-color: rgba(245, 166, 77, 0.452);
 
 }
 th {
@@ -192,4 +192,11 @@ th {
 td{
   color: white;
   font-family: 'Share Tech Mono', monospace;
+}
+section#victory-screen.game-screen{
+  background-color: rgba(245, 166, 77, 0.452);
+}
+canvas{
+  background-color: rgba(245, 166, 77, 0.452);
+
 }
