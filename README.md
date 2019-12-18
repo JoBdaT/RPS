@@ -80,6 +80,10 @@ The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user 
 
 image of code 
 
+**Fight Screen**
+
+image of code
+
 ### RESOURCES:
 
 How to determine if Javascript array contains an object with an attribute that equals a given value?
