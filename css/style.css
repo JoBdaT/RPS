@@ -16,12 +16,12 @@ nav {
 #highScoresPage {
   /* background-color: rgb(178, 185, 82); */
   color: rgb(109, 106, 106);
-  background-image:url(/images/background-for-RSP.jpg) ;
+  background-image:url(../images/background-for-RSP.jpg) ;
 }
-#rounds-screen.info-screen {
+/* #rounds-screen.info-screen {
   background-color: rgba(245, 166, 77, 0.452);
   
-}
+} */
 
 #rpsTitle {
   font-family: 'Sigmar One', cursive ; font-size: 40px;
@@ -102,15 +102,23 @@ body {
   margin-top: -10px;
 }
 
-#button-section {
+#button-section{
   line-height: 350px;
+}
+#next-round-button{
+  margin-top: 120px;
 }
 
 #weaponButtonOne,
 #weaponButtonTwo,
-#weaponButtonThree {
-  width: 60px;
+#weaponButtonThree,
+#next-round-button {
+  width: 70px;
   height: 50px;
+}
+#weaponButtonOne,
+#weaponButtonThree {
+  margin-right: 10px;
 }
 
 #name-form {
@@ -183,15 +191,18 @@ a {
 p{
   color: white;
 }
-a>nav>#rps-aboutUs {
+/* a>nav>#rps-aboutUs {
   font-family: 'Sigmar One', cursive ; font-size: 40px;
 
-}
+} */
 section#name-screen.info-screen{
-  background-color: rgba(245, 166, 77, 0.452);
+  background-color: #b1aca681;
+  
 }
-section#main-game-screen.game-screen{
-  background-color: rgba(245, 166, 77, 0.452);
+.game-screen,
+.info-screen
+{
+  background-color: #b1aca681;
 
 }
 th {
@@ -223,10 +234,10 @@ td {
   margin: auto;
   border: 1px solid whitesmoke;
 }
-section#victory-screen.game-screen{
+/* section#victory-screen.game-screen{
   background-color: rgba(245, 166, 77, 0.452);
 }
 canvas{
   background-color: rgba(245, 166, 77, 0.452);
 
-}
+} */
