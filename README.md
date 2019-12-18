@@ -105,7 +105,7 @@ How to check if JavaScript Object is empty (Example)
 
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
 
-**Font High Score and About Me**
+Font High Score and About Me
 
 https://fonts.google.com/
 
