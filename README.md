@@ -30,11 +30,21 @@ The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the 
 
 For entertainment and amusement.
 
-**Authors:**  Clayton Jones, Daniel Nguyen, Thomas Bhagirath Bhatt
+**Authors:**  Clayton Jones, Daniel Nguyen, Thomas Tilahun, Bhagirath Bhatt
 
 **Last Updated:** December 16, 2019
 
 **Deployed Site:** [Link]()
+
+## Technologies Used
+
+JavaScript
+GitHub
+Ubuntu
+VS Code
+EaselJS
+TweenJS
+
 
 ## Features:
 
@@ -82,3 +92,12 @@ https://www.createjs.com/docs/tweenjs/modules/TweenJS.html
 How to check if JavaScript Object is empty (Example)
 
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
+
+this for high score
+<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Sigmar+One&display=swap" rel="stylesheet">
+font-family: 'Share Tech Mono', monospace;
+THis is for title
+  <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+font-family: 'Sigmar One', cursive;
+background picture
+https://www.google.com/search?q=best+background+pictures+for+game&sxsrf=ACYBGNSzQ2O98-b9l_SnYGFcZHkxa6qGnw:1576552491157&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiIz9HZ27vmAhXLPn0KHRYRC08Q_AUoAXoECA0QAw&biw=1203&bih=674#imgdii=Fu0SIuAtcs6XLM:&imgrc=7cb7tAJd3PzJ0M:
