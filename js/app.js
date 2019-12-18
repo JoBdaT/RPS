@@ -195,9 +195,11 @@ function displayGameScreen(event) {
   hide(roundsScreen);
   show(gameScreen);
   show(uiScreen);
+  // adding test for remove event listener on UI
+  uiScreen.removeEventListener('click', displayGameScreen);
   var roundsChosen = parseInt(event.target.roundValue.value);
   // console.log('playerArray Data inside display game screen before rounds', playerArray);
-  
+
   roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
   // console.log('playerArray Data inside display game screen', playerArray);
