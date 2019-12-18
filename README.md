@@ -105,11 +105,10 @@ How to check if JavaScript Object is empty (Example)
 
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
 
-This is for high score
+**Font High Score and About Me**
 <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Sigmar+One&display=swap" rel="stylesheet">
 Font-family: 'Share Tech Mono', monospace;
 
-This is for title
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 Font-family: 'Sigmar One', cursive;
 
