@@ -38,25 +38,31 @@ For entertainment and amusement.
 
 ## Technologies Used
 
-JavaScript
-GitHub
-Ubuntu
-VS Code
-EaselJS
+JavaScript,
+GitHub,
+Ubuntu,
+VS Code,
+EaselJS,
 TweenJS
 
 
 ## Features:
 
+**Game Description**
+
+Only one user can play against the cpu.
+Enter your name into available name entry on the name entry page.
+Once you enter your name, you select rounds (3, 5, 7) to play, select your weapon.
+When you make your choice click "next" to start fight.
+After Win, Loss, or Tie is determined, you can click "next" to play the next round.
+
 **Name Entry**
 
 The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
 
-
-
 **Round Select Screen**
 
-Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would takw the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
+Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would take the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
 
 **Main Game Screen**
 
@@ -66,9 +72,15 @@ The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user 
  A reset stats button
  Created animation for playing rock paper scissors
  
+ **Generate Random Computer Choice**
  
+ image of code
+ 
+ **Compare User and Computer choice**
 
-RESOURCES:
+image of code 
+
+## RESOURCES:
 
 How to determine if Javascript array contains an object with an attribute that equals a given value?
 https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
@@ -93,12 +105,12 @@ How to check if JavaScript Object is empty (Example)
 
 https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
 
-This isfor high score
+This is for high score
 <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Sigmar+One&display=swap" rel="stylesheet">
 Font-family: 'Share Tech Mono', monospace;
 
 This is for title
-  <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 Font-family: 'Sigmar One', cursive;
 
 Background image
