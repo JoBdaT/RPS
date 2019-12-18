@@ -5,7 +5,7 @@ header {
 }
 
 nav {
-  margin-bottom: 110px;
+  margin-bottom: 100px;
   font-family: 'Permanent Marker', cursive;
   /* font-family: 'Archivo Black', sans-serif;
   font-family: 'Alfa Slab One', cursive; */
@@ -16,12 +16,12 @@ nav {
 #highScoresPage {
   /* background-color: rgb(178, 185, 82); */
   color: rgb(109, 106, 106);
-  background-image:url(/images/background-for-RSP.jpg) ;
+  background-image:url(../images/background-for-RSP.jpg) ;
 }
-#rounds-screen.info-screen {
-  background-color: rgba(58, 230, 15, 0.137);
+/* #rounds-screen.info-screen {
+  background-color: rgba(245, 166, 77, 0.452);
   
-}
+} */
 
 #rpsTitle {
   font-family: 'Sigmar One', cursive ; font-size: 40px;
@@ -95,20 +95,44 @@ body {
   float: right;
 }
 
+.uiName {
+  font-family: 'Permanent Marker', cursive;
+  margin: auto;
+  display: inline-block;
+  margin-top: -10px;
+}
+
+#button-section{
+  line-height: 350px;
+}
+#next-round-button{
+  margin-top: 120px;
+}
+
+#weaponButtonOne,
+#weaponButtonTwo,
+#weaponButtonThree,
+#next-round-button {
+  width: 70px;
+  height: 50px;
+}
+#weaponButtonOne,
+#weaponButtonThree {
+  margin-right: 10px;
+}
+
 #name-form {
   line-height: 300px;
   color: rgb(255,255,255);
 }
 
-#name-form{
+/* #name-form{
   background-color: rgba(58, 230, 15, 0.137);
   /* margin-top: 69px; */
-  
-
 }
 
 #rounds-form {
-  outline: 1px blue solid;
+  /* outline: 1px blue solid; */
   /* padding-top: 100px; */
   vertical-align: middle;
 }
@@ -121,12 +145,12 @@ body {
 
 .pictureColumn {
   width: 25%;
-  outline: 1px blue solid;
+  /* outline: 1px blue solid; */
 }
 
 #column2 {
   width: 40%;
-  outline: 1px solid green;
+  /* outline: 1px solid green; */
 }
 
 .aboutUsImg > img {
@@ -142,7 +166,7 @@ body {
 }
 
 .imgBox {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   /* width: 50%; */
   /* height: 200px; */
   margin: auto;
@@ -153,14 +177,67 @@ body {
   width: 80px;
   height: 120px;
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #canvas {
   margin: auto;
-  outline: 1px solid green;
+  /* outline: 1px solid green; */
 }
 a {
   color: white;
   
 }
+p{
+  color: white;
+}
+/* a>nav>#rps-aboutUs {
+  font-family: 'Sigmar One', cursive ; font-size: 40px;
+
+} */
+section#name-screen.info-screen{
+  background-color: #b1aca681;
+  
+}
+.game-screen,
+.info-screen
+{
+  background-color: #b1aca681;
+
+}
+th {
+    color: white;
+    padding: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 28px;
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 5px;
+}
+td {
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-style: italic;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px dotted whitesmoke;
+}
+
+
+.nameTd {
+  text-align: left;
+  border-right: 1px solid whitesmoke;
+  padding: 0 10px;
+
+}
+
+#highscore-table {
+  margin: auto;
+  border: 1px solid whitesmoke;
+}
+/* section#victory-screen.game-screen{
+  background-color: rgba(245, 166, 77, 0.452);
+}
+canvas{
+  background-color: rgba(245, 166, 77, 0.452);
+
+} */
