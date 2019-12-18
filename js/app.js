@@ -20,8 +20,8 @@ var nextRoundPlayAgainButton = document.getElementById('next-round-button');
 var uiScreen = document.getElementById('ui-screen');
 var playerNameUI = document.getElementById('playerNameUI');
 var cpuNameUI = document.getElementById('cpuNameUI');
-var roundUICount = document.getElementById('uiRoundsCount');
-var winLossUICount = document.getElementById('uiWinLossCount');
+var roundUICount = document.getElementById('uiRounds');
+var winLossUICount = document.getElementById('uiWinLoss');
 
 
 //EVENT LISTENERS
@@ -50,6 +50,9 @@ function Player (playerName) {
   this.totalGamesPlayed = 0;
   this.totalGamesWon = 0;
   this.settings = [];
+  this.countRound = 0;
+  this.countWin = 0;
+  this.countLoss = 0;
 }
 
 // =================================================== //
@@ -57,15 +60,17 @@ function Player (playerName) {
 
 function popNames() {
   playerNameUI.textContent = `${playerObject.playerName}`;
-  cpuNameUI.textContent = 'CPU Enemy!';
+  cpuNameUI.textContent = 'VS the CPU';
 }
 
 function popUI() {
-  roundUICount.textContent = 'roundtest';
-  winLossUICount.textContent = 'winlosstest';
+  roundUICount.textContent = `Round ${playerObject.countRound} of ${playerObject.roundsChosen}`;
+  winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses`;
 }
 
+function clearUI() {
 
+}
 
 // vv ====== UI ====== vv //
 // =================================================== //
@@ -125,14 +130,23 @@ function roundCounter (roundsChosen) {
   case 3:
     playerObject.roundsWon = 2;
     playerObject.roundsLost = 2;
+    playerObject.countWin = 0;
+    playerObject.countLoss = 0;
+    playerObject.countRound = 0;
     break;
   case 5:
     playerObject.roundsWon = 3;
     playerObject.roundsLost = 3;
+    playerObject.countWin = 0;
+    playerObject.countLoss = 0;
+    playerObject.countRound = 0;
     break;
   case 7:
     playerObject.roundsWon = 4;
     playerObject.roundsLost = 4;
+    playerObject.countWin = 0;
+    playerObject.countLoss = 0;
+    playerObject.countRound = 0;
     break;
   }
 }
@@ -181,13 +195,14 @@ function displayGameScreen(event) {
   hide(roundsScreen);
   show(gameScreen);
   show(uiScreen);
-  popNames();
   var roundsChosen = parseInt(event.target.roundValue.value);
   // console.log('playerArray Data inside display game screen before rounds', playerArray);
-
+  
   roundCounter(roundsChosen);
   // console.log('playerObject: ', playerObject);
   // console.log('playerArray Data inside display game screen', playerArray);
+  popNames();
+  popUI();
   storePlayerInitial();
 }
 
@@ -232,10 +247,14 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
     playerObject.roundsWon--;
+    playerObject.countWin++;
+    playerObject.countRound++;
   } else {
     // animate cpuWeapon victory
     testVictory.textContent = 'CPU Wins';
     playerObject.roundsLost--;
+    playerObject.countLoss++;
+    playerObject.countRound++;
   }
 }
 
@@ -269,6 +288,7 @@ function compareWeapons (weaponX, weaponY) {
 function displayVictoryScreen(){
   hide(animationScreen);
   show(victoryScreen);
+  popUI();
 }
 
 // ^^ ====== GAME SCREEN ====== ^^ //
@@ -621,8 +641,10 @@ function draw(userWeapon, cpuWeapon) {
 function handleNextRound() {
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
     playAgain();
+    popUI();
   } else {
     nextRound();
+    popUI();
   }
 }
 
