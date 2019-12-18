@@ -95,6 +95,12 @@ body {
   float: right;
 }
 
+.uiName {
+  font-family: 'Permanent Marker', cursive;
+  margin: auto;
+}
+
+
 #name-form {
   line-height: 300px;
   color: rgb(255,255,255);
@@ -102,9 +108,7 @@ body {
 
 /* #name-form{
   background-color: rgba(58, 230, 15, 0.137);
-  margin-top: 69px; */
-  
-
+  /* margin-top: 69px; */
 }
 
 #rounds-form {
