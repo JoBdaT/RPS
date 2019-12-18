@@ -183,13 +183,31 @@ section#main-game-screen.game-screen{
 
 }
 th {
-    outline: 1px solid green; 
     color: white;
     padding: 10px;
     font-family: 'Share Tech Mono', monospace;
-    
+    font-size: 28px;
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 5px;
 }
-td{
+td {
   color: white;
   font-family: 'Share Tech Mono', monospace;
+  font-style: italic;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px dotted whitesmoke;
+}
+
+
+.nameTd {
+  text-align: left;
+  border-right: 1px solid whitesmoke;
+  padding: 0 10px;
+
+}
+
+#highscore-table {
+  margin: auto;
+  border: 1px solid whitesmoke;
 }
