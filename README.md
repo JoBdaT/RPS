@@ -80,7 +80,7 @@ The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user 
 
 image of code 
 
-# RESOURCES:
+### RESOURCES:
 
 How to determine if Javascript array contains an object with an attribute that equals a given value?
 https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
