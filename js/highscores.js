@@ -6,7 +6,7 @@ var debug = true;
 var playerArray = [];
 var inOrderArray = [];
 
-var tableHeaders = ['Name', 'Score'];
+var tableHeaders = ['Name', 'Games Won'];
 
 // DOM ELEMENTS
 var table = document.getElementById('highscore-table');
@@ -65,17 +65,18 @@ function createTable() {
   var tHeadEl = document.createElement('thead');
 
   for (var i = 0; i < tableHeaders.length; i++) {
-    createElem('th', tHeadEl, tableHeaders[i]);
-    // var thEl = document.createElement('th');
-    // thEl.textContent = tableHeaders[i];
-    // tHeadEl.appendChild(thEl);
+    var thEl = createElem('th', tHeadEl, tableHeaders[i]);
+    if (i === 0) {
+      thEl.setAttribute('id', 'nameHead');
+    }
   }
 
   table.appendChild(tHeadEl);
 
   for (i = 0; i < inOrderArray.length; i++) {
     var trEl = document.createElement('tr');
-    createElem('td', trEl, inOrderArray[i].playerName);
+    var nameTd = createElem('td', trEl, inOrderArray[i].playerName);
+    nameTd.setAttribute('class', 'nameTd');
     createElem('td', trEl, inOrderArray[i].totalGamesWon);
     table.appendChild(trEl);
   }
@@ -85,6 +86,7 @@ function createElem(elem, parent, content) {
   var el = document.createElement(elem);
   el.textContent = content;
   parent.appendChild(el);
+  return el;
 }
 
 getStorage();
