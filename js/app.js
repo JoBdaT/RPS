@@ -66,6 +66,9 @@ function popNames() {
 
 function popUI() {
   roundUICount.textContent = `Round ${playerObject.countRound} of ${playerObject.roundsChosen}`;
+}
+
+function popWinsLossTies () {
   winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses & ${playerObject.countTie} Ties`;
 }
 
@@ -205,6 +208,7 @@ function displayGameScreen(event) {
   // console.log('playerArray Data inside display game screen', playerArray);
   popNames();
   popUI();
+  popWinsLossTies();
   storePlayerInitial();
 }
 
@@ -292,6 +296,7 @@ function compareWeapons (weaponX, weaponY) {
 function displayVictoryScreen(){
   hide(animationScreen);
   show(victoryScreen);
+  popWinsLossTies();
 }
 
 // ^^ ====== GAME SCREEN ====== ^^ //
@@ -663,6 +668,7 @@ function handleNextRound() {
     playAgain();
   } else {
     nextRound();
+    
   }
 }
 
