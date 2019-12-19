@@ -119,7 +119,7 @@ function displayRounds(event) {
 // =================================================== //
 // vv ====== ROUNDS SCREEN ====== vv //
 
-//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUNDEND CHECKS
+//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUND END CHECKS
 function roundCounter (roundsChosen) {
   playerObject.roundsChosen = roundsChosen;
 
