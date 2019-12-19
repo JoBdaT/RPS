@@ -129,7 +129,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 2;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   case 5:
@@ -137,7 +137,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 3;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   case 7:
@@ -145,7 +145,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 4;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   }
@@ -246,6 +246,7 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
     // animate tie
     testVictory.textContent = 'tie';
     playerObject.countTie++;
+    // playerObject.countRound++;
   } else if (userWeapon === winner) {
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
@@ -291,7 +292,6 @@ function compareWeapons (weaponX, weaponY) {
 function displayVictoryScreen(){
   hide(animationScreen);
   show(victoryScreen);
-  popUI();
 }
 
 // ^^ ====== GAME SCREEN ====== ^^ //
@@ -661,10 +661,8 @@ function draw(userWeapon, cpuWeapon) {
 function handleNextRound() {
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
     playAgain();
-    popUI();
   } else {
     nextRound();
-    popUI();
   }
 }
 
@@ -687,11 +685,15 @@ function playAgain () {
   hide(victoryScreen);
   hide(uiScreen);
   show(roundsScreen);
+  popUI();
+
 }
 
 function nextRound() {
+  // playerObject.countRound++;
   hide(victoryScreen);
   show(gameScreen);
+  popUI();
 }
 
 // ^^ ====== VICTORY SCREEN ====== ^^ //

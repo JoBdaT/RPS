@@ -159,14 +159,12 @@ body {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid gray 1px;
 }
 
 .game-screen {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid purple 1px;
 }
 
 .ui-screen {
