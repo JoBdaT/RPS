@@ -58,31 +58,49 @@ After Win, Loss, or Tie is determined, you can click "next" to play the next rou
 
 **Name Entry**
 
-The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.
+The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.image of code
+
+**Function player data**
+
+The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If notthen is creates the user profile and stores it in local storage. 
+
+add image of code
 
 **Round Select Screen**
 
 Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would take the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
 
+**Round counter**
+
+The rounds counter keeps track of the rounds played, win/losses by the users or cpu and stored the data to the local storage.
+
+add image
+
 **Main Game Screen**
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selected their weapon by clicking the button of their weapon choice, the CPU weapon was selected randomly and stored as a variable. Fight feature displayed the battle animation and 
+
+The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button of their weapon choice, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+
 
  Display the front page to begin the fight
  A reset stats button
  Created animation for playing rock paper scissors
  
- **Generate Random Computer Choice**
- 
- image of code
- 
- **Compare User and Computer choice**
+**Animation screen**
 
-image of code 
+The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the eventof a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
 
-**Fight Screen**
+add code img
 
-image of code
+**Code testing** 
+
+To ensure funtionality testing functions were incorporated at speocic points in the js. This primarily allowed us to test the funtins nad features of the game as we moved along in makiing this game.
+
+add img code
+
+**Logic**
+
+code img line 342 -406
 
 ### RESOURCES:
 
