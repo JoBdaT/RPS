@@ -24,7 +24,7 @@
 [Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
 
 The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
-The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mantioned at the end of this readme.
+The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
 
 # Purpose: 
 
@@ -78,7 +78,9 @@ add image
 
 **Main Game Screen**
 
+
 The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button of their weapon choice, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+
 
  Display the front page to begin the fight
  A reset stats button
