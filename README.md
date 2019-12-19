@@ -64,7 +64,7 @@ The first page is a form to create a user data/profile. The checkUser function w
 
 The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If notthen is creates the user profile and stores it in local storage. 
 
-add image of code
+![Check user data function](img-README/CheckUserDATA.PNG)
 
 **Round Select Screen**
 
@@ -74,7 +74,7 @@ Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we
 
 The rounds counter keeps track of the rounds played, win/losses by the users or cpu and stored the data to the local storage.
 
-add image
+![Round counter](img-README/Rounds_counter.PNG)
 
 **Main Game Screen**
 
@@ -90,17 +90,14 @@ The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user 
 
 The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the eventof a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
 
-add code img
+![Animation logic](img-README/Logic.PNG)
 
 **Code testing** 
 
 To ensure funtionality testing functions were incorporated at speocic points in the js. This primarily allowed us to test the funtins nad features of the game as we moved along in makiing this game.
 
-add img code
+![Test function](img-README/Test.PNG)
 
-**Logic**
-
-code img line 342 -406
 
 ### RESOURCES:
 
