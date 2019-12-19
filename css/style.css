@@ -1,3 +1,5 @@
+/* // vv ====== HEADER ====== vv // */
+
 header {
   width: 60%;
   margin: auto;
@@ -11,42 +13,155 @@ nav {
   font-family: 'Alfa Slab One', cursive; */
 }
 
-#gamePage,
-#aboutUsPage,
-#highScoresPage {
-  /* background-color: rgb(178, 185, 82); */
-  color: rgb(109, 106, 106);
-  background-image:url(../images/background-for-RSP.jpg) ;
-}
-/* #rounds-screen.info-screen {
-  background-color: rgba(245, 166, 77, 0.452);
-  
-} */
-
 #rpsTitle {
   font-family: 'Sigmar One', cursive ; font-size: 40px;
   /* font-family: 'Permanent Marker', cursive; */
   /* font-size: large; */
   padding-bottom: 5px;
 }
-#choose-Round{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-  color: rgb(255,255,255);
-  /* margin-top: 69px; */
-  
-}
-#roundValue{
-  /* margin-top: 40px; */
-}
+/* // ^^ ====== HEADER ====== ^^ // */
+
+
+/* // vv ====== ABOUT US ====== vv // */
 
 #aboutUs {
   float: left;
   margin-top: 40px;
 }
 
+#column1,
+#column2,
+#column3 {
+  display: inline-block;
+}
+
+.pictureColumn {
+  width: 22%;
+  /* outline: 1px blue solid; */
+}
+
+#column2 {
+  width: 40%;
+  /* outline: 1px solid red; */
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #0000008c;
+  border-radius: 10px;
+  padding: 10px 8px;
+  
+}
+
+#column2 > p {
+  padding-bottom: 10px;
+}
+
+.about-name {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.aboutUsImg > img {
+  width: 100px;
+  margin: auto;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.imgBox > a {
+  display: block;
+  font-size: small;
+}
+
+.imgBox {
+  /* outline: 1px solid red; */
+  /* width: 50%; */
+  /* height: 200px; */
+  margin: auto;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+}
+
+.imgBox > div {
+  width: 100px;
+  height: 120px;
+  margin: auto;
+  /* border: 1px solid black; */
+}
+
+.imgBox > p {
+  font-family: 'Sigmar One', cursive ; font-size: medium;
+}
+
+.imgBox > a {
+  font-family: 'Permanent Marker', cursive;
+}
+
+#img1, #img3 {
+  padding-bottom: 10px;
+}
+
+
+
+
+.linkedin {
+  float: left;
+  width: 40px;
+  opacity: 0.45;
+}
+
+.linkedin:hover {
+  opacity: 1;
+}
+
+.github {
+  margin-top: 5px;
+  float: right;
+  width: 30px;
+  opacity: 0.45;
+}
+
+.github:hover {
+  opacity: 1;
+}
+
+#img2, 
+#img4 {
+  margin-top: 40px;
+}
+/* // ^^ ====== ABOUT US ====== ^^ // */
+
+
+/* // vv ====== HIGH SCORES ====== vv // */
+
 #highScores {
   float: right;
   margin-top: 40px;
+}
+
+#highscore-table {
+  margin: auto;
+  border: 1px solid whitesmoke;
+}
+
+/* // ^^ ====== HIGH SCORES ====== ^^ // */
+
+
+/* // vv ====== GAME SCREENS ====== vv // */
+
+#gamePage,
+#aboutUsPage,
+#highScoresPage {
+  color: rgb(109, 106, 106);
+  background-image:url(../images/background-for-RSP.jpg) ;
+}
+
+#choose-Round{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  color: rgb(255,255,255);
+  line-height: 26px;
 }
 
 body {
@@ -69,14 +184,12 @@ body {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid gray 1px;
 }
 
 .game-screen {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid purple 1px;
 }
 
 .ui-screen {
@@ -103,10 +216,33 @@ body {
 }
 
 #button-section{
-  line-height: 350px;
+  line-height: 375px;
 }
+
+#name-form > button {
+  width: 50px;
+  height: 24px;
+}
+
+input#nameInput {
+  height: 16px;
+}
+
+#name-form > label {
+  font-size: 20px;
+}
+
+select#roundValue {
+  height: 24px;
+}
+
+button#rounds-button {
+  width: 50px;
+  height: 24px;
+}
+
 #next-round-button{
-  margin-top: 120px;
+  margin-top: 147px;
 }
 
 #weaponButtonOne,
@@ -116,95 +252,44 @@ body {
   width: 70px;
   height: 50px;
 }
+
 #weaponButtonOne,
 #weaponButtonThree {
   margin-right: 10px;
 }
 
 #name-form {
-  line-height: 300px;
+  line-height: 350px;
   color: rgb(255,255,255);
 }
 
-/* #name-form{
-  background-color: rgba(58, 230, 15, 0.137);
-  /* margin-top: 69px; */
-}
-
-#rounds-form {
-  /* outline: 1px blue solid; */
-  /* padding-top: 100px; */
-  vertical-align: middle;
-}
-
-#column1,
-#column2,
-#column3 {
-  display: inline-block;
-}
-
-.pictureColumn {
-  width: 25%;
-  /* outline: 1px blue solid; */
-}
-
-#column2 {
-  width: 40%;
-  /* outline: 1px solid green; */
-}
-
-.aboutUsImg > img {
-  width: 80px;
-  margin: auto;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-.imgBox > a {
-  display: block;
-  font-size: small;
-}
-
-.imgBox {
-  /* outline: 1px solid red; */
-  /* width: 50%; */
-  /* height: 200px; */
-  margin: auto;
-  padding-top: 10px;
-}
-
-.imgBox > div {
-  width: 80px;
-  height: 120px;
-  margin: auto;
-  /* border: 1px solid black; */
+#roundsform {
+  padding-top: 150px;
 }
 
 #canvas {
   margin: auto;
-  /* outline: 1px solid green; */
 }
+
 a {
   color: white;
   
 }
+
 p{
   color: white;
 }
-/* a>nav>#rps-aboutUs {
-  font-family: 'Sigmar One', cursive ; font-size: 40px;
 
-} */
 section#name-screen.info-screen{
   background-color: #b1aca681;
-  
 }
+
 .game-screen,
 .info-screen
 {
   background-color: #b1aca681;
-
 }
+
 th {
     color: white;
     padding: 10px;
@@ -213,6 +298,7 @@ th {
     border-bottom: 1px solid whitesmoke;
     margin-bottom: 5px;
 }
+
 td {
   color: white;
   font-family: 'Share Tech Mono', monospace;
@@ -222,22 +308,10 @@ td {
   border-bottom: 1px dotted whitesmoke;
 }
 
-
 .nameTd {
   text-align: left;
   border-right: 1px solid whitesmoke;
   padding: 0 10px;
 
 }
-
-#highscore-table {
-  margin: auto;
-  border: 1px solid whitesmoke;
-}
-/* section#victory-screen.game-screen{
-  background-color: rgba(245, 166, 77, 0.452);
-}
-canvas{
-  background-color: rgba(245, 166, 77, 0.452);
-
-} */
+/* // ^^ ====== HIGH SCORES ====== ^^ // */

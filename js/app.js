@@ -66,6 +66,9 @@ function popNames() {
 
 function popUI() {
   roundUICount.textContent = `Round ${playerObject.countRound} of ${playerObject.roundsChosen}`;
+}
+
+function popWinsLossTies () {
   winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses & ${playerObject.countTie} Ties`;
 }
 
@@ -119,7 +122,7 @@ function displayRounds(event) {
 // =================================================== //
 // vv ====== ROUNDS SCREEN ====== vv //
 
-//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUNDEND CHECKS
+//FUNCTION TO POPULATE ROUND VALUE, ADD TO PLAYER OBJECT FOR ROUND END CHECKS
 function roundCounter (roundsChosen) {
   playerObject.roundsChosen = roundsChosen;
 
@@ -129,7 +132,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 2;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   case 5:
@@ -137,7 +140,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 3;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   case 7:
@@ -145,7 +148,7 @@ function roundCounter (roundsChosen) {
     playerObject.roundsLost = 4;
     playerObject.countWin = 0;
     playerObject.countLoss = 0;
-    playerObject.countRound = 0;
+    playerObject.countRound = 1;
     playerObject.countTie = 0;
     break;
   }
@@ -205,6 +208,7 @@ function displayGameScreen(event) {
   // console.log('playerArray Data inside display game screen', playerArray);
   popNames();
   popUI();
+  popWinsLossTies();
   storePlayerInitial();
 }
 
@@ -246,6 +250,7 @@ function declareWinner (userWeapon, cpuWeapon, winner) {
     // animate tie
     testVictory.textContent = 'tie';
     playerObject.countTie++;
+    // playerObject.countRound++;
   } else if (userWeapon === winner) {
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
@@ -291,7 +296,7 @@ function compareWeapons (weaponX, weaponY) {
 function displayVictoryScreen(){
   hide(animationScreen);
   show(victoryScreen);
-  popUI();
+  popWinsLossTies();
 }
 
 // ^^ ====== GAME SCREEN ====== ^^ //
@@ -305,7 +310,6 @@ function draw(userWeapon, cpuWeapon) {
 
   stage.autoClear = true;
   stage.clear();
-  console.log('begin animation');
   // var userRock = new createjs.Shape();
   // userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
   // var cpuRock = new createjs.Shape();
@@ -319,22 +323,22 @@ function draw(userWeapon, cpuWeapon) {
   // var cpuScissors = new createjs.Shape();
   // cpuScissors.graphics.beginFill('Red').drawPolyStar(0, 0, 1.5, 5, -35);
 
-  var userRock = new createjs.Bitmap('../images/rock2.png');
+  var userRock = new createjs.Bitmap('images/rock2.png');
   userRock.scaleX = 0.15;
   userRock.scaleY = 0.15;
-  var cpuRock = new createjs.Bitmap('../images/rock2.png');
+  var cpuRock = new createjs.Bitmap('images/rock2.png');
   cpuRock.scaleX = 0.15;
   cpuRock.scaleY = 0.15;
-  var userPaper = new createjs.Bitmap('../images/paper2.png');
+  var userPaper = new createjs.Bitmap('images/paper2.png');
   userPaper.scaleX = 0.15;
   userPaper.scaleY = 0.15;
-  var cpuPaper = new createjs.Bitmap('../images/paper2.png');
+  var cpuPaper = new createjs.Bitmap('images/paper2.png');
   cpuPaper.scaleX = 0.15;
   cpuPaper.scaleY = 0.15;
-  var userScissors = new createjs.Bitmap('../images/scissors2.png');
+  var userScissors = new createjs.Bitmap('images/scissors2.png');
   userScissors.scaleX = 0.15;
   userScissors.scaleY = 0.20;
-  var cpuScissors = new createjs.Bitmap('../images/scissors2.png');
+  var cpuScissors = new createjs.Bitmap('images/scissors2.png');
   cpuScissors.scaleX = 0.15;
   cpuScissors.scaleY = 0.20;
 
@@ -649,7 +653,6 @@ function draw(userWeapon, cpuWeapon) {
   createjs.Ticker.framerate = 60;
   createjs.Ticker.addEventListener('tick', stage);
 
-  console.log('end animation');
 }
 
 // ^^ ====== ANIMATION SCREEN ====== ^^ //
@@ -663,10 +666,9 @@ function draw(userWeapon, cpuWeapon) {
 function handleNextRound() {
   if (playerObject.roundsWon === 0 || playerObject.roundsLost === 0) {
     playAgain();
-    popUI();
   } else {
     nextRound();
-    popUI();
+    
   }
 }
 
@@ -689,11 +691,15 @@ function playAgain () {
   hide(victoryScreen);
   hide(uiScreen);
   show(roundsScreen);
+  popUI();
+
 }
 
 function nextRound() {
+  // playerObject.countRound++;
   hide(victoryScreen);
   show(gameScreen);
+  popUI();
 }
 
 // ^^ ====== VICTORY SCREEN ====== ^^ //
