@@ -17,6 +17,14 @@ nav {
   /* background-color: rgb(178, 185, 82); */
   color: rgb(109, 106, 106);
   background-image:url(../images/background-for-RSP.jpg) ;
+  /* background-image: url(../images/29107.jpg); */
+  /* background-image: url(../images/black-wallpaper-images-19.jpg);  */
+  /* background-image: url(../images/black-background-screensaver-4.jpg);  */
+  /* background-image: url(../images/black-wallpaper-RPS.jpg);  */
+
+
+
+  
 }
 /* #rounds-screen.info-screen {
   background-color: rgba(245, 166, 77, 0.452);
@@ -69,14 +77,14 @@ body {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid gray 1px;
+  outline: solid rgb(250, 249, 250) 1px;
 }
 
 .game-screen {
   width: 500px;
   height: 375px;
   margin: auto;
-  outline: solid purple 1px;
+  outline: solid rgb(250, 249, 250) 1px;
 }
 
 .ui-screen {
@@ -129,7 +137,7 @@ body {
 /* #name-form{
   background-color: rgba(58, 230, 15, 0.137);
   /* margin-top: 69px; */
-}
+/* } */
 
 #rounds-form {
   /* outline: 1px blue solid; */
@@ -160,10 +168,10 @@ body {
   vertical-align: middle;
 }
 
-.imgBox > a {
+/* .imgBox > a {
   display: block;
   font-size: small;
-}
+} */
 
 .imgBox {
   /* outline: 1px solid red; */
@@ -196,13 +204,13 @@ p{
 
 } */
 section#name-screen.info-screen{
-  background-color: #b1aca681;
+  background-color: #fcf9f913;
   
 }
 .game-screen,
 .info-screen
 {
-  background-color: #b1aca681;
+  background-color: hsla(0, 40%, 98%, 0.192);
 
 }
 th {
@@ -241,3 +249,34 @@ canvas{
   background-color: rgba(245, 166, 77, 0.452);
 
 } */
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  
+
+
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-github {
+  
+  /* border: inset;
+  border-width: 1px; */
+  /* padding: 5px; */
+  /* width: 60px; */
+  /* background-color: rgb(8, 0, 0); */
+  /* margin-bottom: 100px */
+  /* margin:5px 2px;  */
+}
+
+
