@@ -46,6 +46,10 @@ nav {
   margin-left: 10px;
   margin-right: 10px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #0000008c;
+  border-radius: 10px;
+  padding: 10px 8px;
+  
 }
 
 #column2 > p {
