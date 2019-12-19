@@ -129,23 +129,14 @@ nav {
 #gamePage,
 #aboutUsPage,
 #highScoresPage {
-  /* background-color: rgb(178, 185, 82); */
   color: rgb(109, 106, 106);
   background-image:url(../images/background-for-RSP.jpg) ;
 }
-/* #rounds-screen.info-screen {
-  background-color: rgba(245, 166, 77, 0.452);
-  
-} */
 
 #choose-Round{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
   color: rgb(255,255,255);
-  /* margin-top: 69px; */
-  
-}
-#roundValue{
-  /* margin-top: 40px; */
+  line-height: 26px;
 }
 
 body {
@@ -202,10 +193,33 @@ body {
 }
 
 #button-section{
-  line-height: 350px;
+  line-height: 375px;
 }
+
+#name-form > button {
+  width: 50px;
+  height: 24px;
+}
+
+input#nameInput {
+  height: 16px;
+}
+
+#name-form > label {
+  font-size: 20px;
+}
+
+select#roundValue {
+  height: 24px;
+}
+
+button#rounds-button {
+  width: 50px;
+  height: 24px;
+}
+
 #next-round-button{
-  margin-top: 120px;
+  margin-top: 147px;
 }
 
 #weaponButtonOne,
@@ -215,35 +229,30 @@ body {
   width: 70px;
   height: 50px;
 }
+
 #weaponButtonOne,
 #weaponButtonThree {
   margin-right: 10px;
 }
 
 #name-form {
-  line-height: 300px;
+  line-height: 350px;
   color: rgb(255,255,255);
 }
 
-/* #name-form{
-  background-color: rgba(58, 230, 15, 0.137);
-  /* margin-top: 69px; */
-}
-
-#rounds-form {
-  /* outline: 1px blue solid; */
-  /* padding-top: 100px; */
-  vertical-align: middle;
+#roundsform {
+  padding-top: 150px;
 }
 
 #canvas {
   margin: auto;
-  /* outline: 1px solid green; */
 }
+
 a {
   color: white;
   
 }
+
 p{
   color: white;
 }
@@ -251,6 +260,7 @@ p{
 section#name-screen.info-screen{
   background-color: #b1aca681;
 }
+
 .game-screen,
 .info-screen
 {
@@ -265,6 +275,7 @@ th {
     border-bottom: 1px solid whitesmoke;
     margin-bottom: 5px;
 }
+
 td {
   color: white;
   font-family: 'Share Tech Mono', monospace;
