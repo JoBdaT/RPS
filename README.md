@@ -50,12 +50,12 @@ TweenJS
 Only one user can play against the cpu.
 Enter your name into available name entry on the name entry page.
 Once you enter your name, you select rounds (3, 5, 7) to play, select your weapon.
-When you make your choice click "next" to start fight.
+When you make your choice click "next" to start the fight.
 After Win, Loss, or Tie is determined, you can click "next" to play the next round.
 
 **Name Entry**
 
-The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.image of code
+The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not it created the profile and stored it in local storage.
 
 **Function player data**
 
@@ -69,29 +69,26 @@ Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we
 
 **Round counter**
 
-The rounds counter keeps track of the rounds played, wins/losses by the users or cpu and stored the data to the local storage.
+The rounds counter keeps track of the rounds played, wins/losses by the users or cpu, and stores the data to the local storage.
 
 ![Round counter](img-README/Rounds_counter.PNG)
 
 **Main Game Screen**
 
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose the weapon, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+The screen features the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose the weapon. The CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
 
-The screen additionally displays
- Display the front page to begin the fight
- A reset stats button
- Created animation for playing rock paper scissors
+The screen additionally displays the front page to begin the fight. A button activates animation for playing rock, paper, scissors.
  
 **Animation screen**
 
-The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the event of a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
+The animation screen brings in the chosen weapons and animates the fight. The winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the event of a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
 
 ![Animation logic](img-README/Logic.PNG)
 
 **Code testing** 
 
-To ensure funtionality, testing functions were incorporated at specific points in the js. This primarily allowed us to test the funtions and features of the game as we moved along in making this game.
+To ensure funtionality, testing functions were incorporated at specific points in the js. This primarily allowed us to test the functions and features of the game as we moved along in making this game.
 
 ![Test function](img-README/Test.PNG)
 
