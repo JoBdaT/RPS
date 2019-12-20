@@ -1,40 +1,37 @@
 # RPS - The Classic Game of Rock, Paper, Scissors
 
-## Wireframe
-[Domain Model & Wireframe](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
-
-**Title Name Entry**
-![title-game](./img-README/title-name.png)
-
-**Title Round Select**
-![title-round](./img-README/title-round.png)
-
-**Title Main Game Screen**
-![main game screen](./img-README/game-main.png)
-
-***All title screens are one page, with hidden/displayed elements***  
-  
-**High Scores**
-![high scores](./img-README/high-scores.png)
-
-**About Us**
-![about us](./img-README/about-us.png)
-
-
-[Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
-
-The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
-The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
-
 # Purpose: 
 
 For entertainment and amusement.
 
 **Authors:**  Clayton Jones, Daniel Nguyen, Thomas Tilahun, Bhagirath Bhatt
 
-**Last Updated:** December 16, 2019
+**Last Updated:** December 19, 2019
 
-**Deployed Site:** [Link]()
+**Deployed Site:** []()https://jobdat.github.io/RPS/
+
+[Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
+
+The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
+The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
+
+## How to run the app
+
+From the terminal 'open index.html' from root of the project 
+
+OR
+
+'live-server' from the root of the project
+
+OR
+
+Click the deployed link above
+
+## Wireframe and Domain Model
+[Draw.io link](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
+
+![Wireframe](img-README/Wire2.PNG)
+![Domain Model](img-README/Wireframe.PNG)
 
 ## Technologies Used
 
@@ -53,48 +50,45 @@ TweenJS
 Only one user can play against the cpu.
 Enter your name into available name entry on the name entry page.
 Once you enter your name, you select rounds (3, 5, 7) to play, select your weapon.
-When you make your choice click "next" to start fight.
+When you make your choice click "next" to start the fight.
 After Win, Loss, or Tie is determined, you can click "next" to play the next round.
 
 **Name Entry**
 
-The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not created the profile and stored in local storage.image of code
+The first page is a form to create a user data/profile. The checkUser function was used to verify if the user data existed, and if not it created the profile and stored it in local storage.
 
 **Function player data**
 
-The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If notthen is creates the user profile and stores it in local storage. 
+The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If not, then it creates the user profile and stores it in local storage. 
 
 ![Check user data function](img-README/CheckUserDATA.PNG)
 
 **Round Select Screen**
 
-Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would take the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
+Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next button. The next button advanced the game to the next round. The rounds data was put into a constructor which moved it to a player constructor object.
 
 **Round counter**
 
-The rounds counter keeps track of the rounds played, win/losses by the users or cpu and stored the data to the local storage.
+The rounds counter keeps track of the rounds played, wins/losses by the users or cpu, and stores the data to the local storage.
 
 ![Round counter](img-README/Rounds_counter.PNG)
 
 **Main Game Screen**
 
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button of their weapon choice, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+The screen features the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose the weapon. The CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
 
-
- Display the front page to begin the fight
- A reset stats button
- Created animation for playing rock paper scissors
+The screen additionally displays the front page to begin the fight. A button activates animation for playing rock, paper, scissors.
  
 **Animation screen**
 
-The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the eventof a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
+The animation screen brings in the chosen weapons and animates the fight. The winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the event of a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
 
 ![Animation logic](img-README/Logic.PNG)
 
 **Code testing** 
 
-To ensure funtionality testing functions were incorporated at speocic points in the js. This primarily allowed us to test the funtins nad features of the game as we moved along in makiing this game.
+To ensure funtionality, testing functions were incorporated at specific points in the js. This primarily allowed us to test the functions and features of the game as we moved along in making this game.
 
 ![Test function](img-README/Test.PNG)
 
