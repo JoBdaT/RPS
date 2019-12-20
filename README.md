@@ -1,10 +1,5 @@
 # RPS - The Classic Game of Rock, Paper, Scissors
 
-[Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
-
-The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
-The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
-
 # Purpose: 
 
 For entertainment and amusement.
@@ -14,6 +9,17 @@ For entertainment and amusement.
 **Last Updated:** December 19, 2019
 
 **Deployed Site:** []()https://jobdat.github.io/RPS/
+
+[Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
+
+The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
+The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
+
+
+## Wireframe and Domain Model
+[Draw.io link](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
+
+
 
 ## Technologies Used
 
