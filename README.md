@@ -19,7 +19,8 @@ The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the 
 ## Wireframe and Domain Model
 [Draw.io link](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
 
-
+![Wireframe](img-README/Wire2.PNG)
+![Domain Model](img-README/Wireframe.PNG)
 
 ## Technologies Used
 
