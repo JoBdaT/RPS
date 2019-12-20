@@ -22,12 +22,11 @@ var playerNameUI = document.getElementById('playerNameUI');
 var cpuNameUI = document.getElementById('cpuNameUI');
 var roundUICount = document.getElementById('uiRounds');
 var winLossUICount = document.getElementById('uiWinLoss');
-
+var testVictory = document.getElementById('test-victory');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
 nameForm.addEventListener('submit', checkUserData);
-// 1
 roundsButton.addEventListener('submit', displayGameScreen);
 weaponButtonOne.addEventListener('click', fight);
 weaponButtonTwo.addEventListener('click', fight);
@@ -72,7 +71,7 @@ function popWinsLossTies () {
   winLossUICount.textContent = `${playerObject.countWin} Wins & ${playerObject.countLoss} Losses & ${playerObject.countTie} Ties`;
 }
 
-// vv ====== UI ====== vv //
+// ^^ ====== UI ====== ^^ //
 // =================================================== //
 
 // =================================================== //
@@ -82,30 +81,20 @@ function popWinsLossTies () {
 function checkUserData(event) {
   event.preventDefault();
   var userNameInput = event.target.nameInput.value;
-  console.log('userNameInput: ', userNameInput);
-  // playerObject = new Player(userNameInput);
-  // console.log('player object is ',playerObject);
 
   if (localStorage.getItem('playerArray')) {
-    console.log('playerArray exists');
     playerArray = JSON.parse(localStorage.getItem('playerArray'));
-    console.log('playerArray:', playerArray);
 
     for (var i = 0; i < playerArray.length; i++) {
       if (userNameInput === playerArray[i].playerName) {
-        console.log('playerObject before reassign:', playerObject);
-        console.log('playerArray[i]:', playerArray[i]);
         playerObject = playerArray[i];
-        console.log('playerObject after reassign:', playerObject);
       }
     }
   }
 
   if (isEmpty(playerObject)) {
-    console.log('Creating new player');
     playerObject = new Player(userNameInput);
   }
-  // console.log('player object is ',playerObject);
 }
 
 //FUNCTION TO DISPLAY ROUNDS
@@ -156,14 +145,11 @@ function roundCounter (roundsChosen) {
 
 // STORES PLAYER DATA INTO LOCAL STORAGE
 function storePlayerInitial() {
-  // add array.splice to update playerObject in playerArray
-  console.log('playerArray before storage: ', playerArray.length);
 
   var found = true;
   for (var i = 0; i < playerArray.length; i++) {
     if (playerArray[i].playerName === playerObject.playerName) {
       found = false;
-      // console.log('Inside loop for player array length');
       break;
     }
   }
@@ -171,41 +157,28 @@ function storePlayerInitial() {
   // this part should only fire if player input name does NOT already exist in storage
   if (found) {
     playerArray.push(playerObject);
-    console.log('object pushed to array');
   }
 
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
-  console.log('playerArray after storage: ', playerArray);
 }
 
 function storePlayerPostMatch() {
-  // for (var i = 0; i < playerArray.length; i++) {
-  //   if (playerObject.playerName === playerArray[i].playerName) {
-  //     playerArray.splice(i, 1, playerObject);
-  //     break;
-  //   }
-  // }
   localStorage.setItem('playerArray', JSON.stringify(playerArray));
 }
 
 //FUNCTION TO DISPLAY GAME SCREEN
 //fires on NEXT BUTTON on ROUNDS screen
 function displayGameScreen(event) {
-  // console.log('You chose rounds and hit next');
-  // console.log('playerArray Data inside display game screen before hide', playerArray);
 
   event.preventDefault();
   hide(roundsScreen);
   show(gameScreen);
   show(uiScreen);
-  // adding test for remove event listener on UI
+  // adding Remove Event Listener to address bug where game screen duped when you click the score
   uiScreen.removeEventListener('click', displayGameScreen);
   var roundsChosen = parseInt(event.target.roundValue.value);
-  // console.log('playerArray Data inside display game screen before rounds', playerArray);
 
   roundCounter(roundsChosen);
-  // console.log('playerObject: ', playerObject);
-  // console.log('playerArray Data inside display game screen', playerArray);
   popNames();
   popUI();
   popWinsLossTies();
@@ -225,8 +198,6 @@ function fight(event){
   event.preventDefault();
   var cpuWeapon = cpuChoice();
   var userWeapon = event.target.value;
-  console.log('userWeapon :' ,userWeapon);
-  console.log('cpuWeapon :' , cpuWeapon);
   hide(gameScreen);
   show(animationScreen);
   var winner = compareWeapons(cpuWeapon, userWeapon);
@@ -238,19 +209,14 @@ function fight(event){
     nextRoundPlayAgainButton.textContent = 'Play Again';
   }
   window.setTimeout(displayVictoryScreen, 2500);
-  console.log('winner: ', winner);
 }
 
-var testVictory = document.getElementById('test-victory');
 
-
-// get rid of this function and incorporate the display into draw()
 function declareWinner (userWeapon, cpuWeapon, winner) {
   if (winner === 'tie') {
     // animate tie
     testVictory.textContent = 'tie';
     playerObject.countTie++;
-    // playerObject.countRound++;
   } else if (userWeapon === winner) {
     // animate userWeapon victory
     testVictory.textContent = 'User Wins';
@@ -310,18 +276,6 @@ function draw(userWeapon, cpuWeapon) {
 
   stage.autoClear = true;
   stage.clear();
-  // var userRock = new createjs.Shape();
-  // userRock.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
-  // var cpuRock = new createjs.Shape();
-  // cpuRock.graphics.beginFill('Red').drawCircle(0, 0, 50);
-  // var userPaper = new createjs.Shape();
-  // userPaper.graphics.beginFill('DeepSkyBlue').drawRect(0, 0, 95, 110);
-  // var cpuPaper = new createjs.Shape();
-  // cpuPaper.graphics.beginFill('Red').drawRect(0, 0, 95, 110);
-  // var userScissors = new createjs.Shape();
-  // userScissors.graphics.beginFill('DeepSkyBlue').drawPolyStar(0, 0, 1.5, 5, 35);
-  // var cpuScissors = new createjs.Shape();
-  // cpuScissors.graphics.beginFill('Red').drawPolyStar(0, 0, 1.5, 5, -35);
 
   var userRock = new createjs.Bitmap('images/rock2.png');
   userRock.scaleX = 0.15;
@@ -443,8 +397,6 @@ function draw(userWeapon, cpuWeapon) {
       createjs.Ticker.addEventListener('tick', stage);
     }
 
-    // createjs.Ticker.framerate = 60;
-    // createjs.Ticker.addEventListener('tick', stage);
   }
   if (userWeapon === 'paper') {
     userPaper.x = 50;
@@ -506,7 +458,6 @@ function draw(userWeapon, cpuWeapon) {
         .to({ x: 285 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 275 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 285 }, 50, createjs.Ease.getPowInOut(4))
-        // .to({ x: 300 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 600, y: -50}, 100, createjs.Ease.getPowInOut(4))
         .to({ alpha: 0 }, 100);
     }
@@ -523,7 +474,6 @@ function draw(userWeapon, cpuWeapon) {
         .to({ x: 165 }, 50, createjs.Ease.getPowInOut(4)) // 3
         .to({ x: 175 }, 50, createjs.Ease.getPowInOut(4)) // 4 swing
         .to({ x: 165 }, 50, createjs.Ease.getPowInOut(4)) // 5
-        // .to({ x: 150 }, 50, createjs.Ease.getPowInOut(4)) // 6 swing
         .to({ x: -50, y: -50 }, 50, createjs.Ease.getPowInOut(4)) //
         .to({ alpha: 0 }, 400);
 
@@ -540,8 +490,6 @@ function draw(userWeapon, cpuWeapon) {
 
     }
 
-    // createjs.Ticker.framerate = 60;
-    // createjs.Ticker.addEventListener('tick', stage);
 
   }
   if (userWeapon === 'scissors') {
@@ -591,7 +539,6 @@ function draw(userWeapon, cpuWeapon) {
         .to({ x: 165 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 175 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: -50, y: -50 }, 400, createjs.Ease.getPowInOut(4))
-        // .to({ x: 210 }, 50, createjs.Ease.getPowInOut(4))
         .to({ alpha: 0 }, 100);
 
       createjs.Tween.get(cpuRock, { loop: false })
@@ -635,8 +582,6 @@ function draw(userWeapon, cpuWeapon) {
         .to({ x: 270 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4)) // hit
         .to({ x: 270 }, 50, createjs.Ease.getPowInOut(4))
-        // .to({ x: 250 }, 50, createjs.Ease.getPowInOut(4))
-        // .to({ x: 260 }, 50, createjs.Ease.getPowInOut(4))
         .to({ x: 600, y: -50 }, 400, createjs.Ease.getPowInOut(4)) // fly away
         .to({ alpha: 0 }, 50);
 
@@ -644,9 +589,6 @@ function draw(userWeapon, cpuWeapon) {
       createjs.Ticker.addEventListener('tick', stage);
 
     }
-
-    // createjs.Ticker.framerate = 60;
-    // createjs.Ticker.addEventListener('tick', stage);
 
   }
 
@@ -668,7 +610,7 @@ function handleNextRound() {
     playAgain();
   } else {
     nextRound();
-    
+
   }
 }
 
@@ -696,7 +638,6 @@ function playAgain () {
 }
 
 function nextRound() {
-  // playerObject.countRound++;
   hide(victoryScreen);
   show(gameScreen);
   popUI();

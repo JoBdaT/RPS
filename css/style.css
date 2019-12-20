@@ -164,6 +164,10 @@ nav {
   line-height: 26px;
 }
 
+#name-entry {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+}
+
 body {
   background-color: whitesmoke;
   width: 80%;
@@ -213,6 +217,11 @@ body {
   margin: auto;
   display: inline-block;
   margin-top: -10px;
+}
+
+#test-victory {
+  font-family: 'Permanent Marker', cursive;
+  padding-top: 10px;
 }
 
 #button-section{
