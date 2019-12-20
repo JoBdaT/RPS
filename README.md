@@ -11,7 +11,7 @@ For entertainment and amusement.
 
 **Authors:**  Clayton Jones, Daniel Nguyen, Thomas Tilahun, Bhagirath Bhatt
 
-**Last Updated:** December 16, 2019
+**Last Updated:** December 19, 2019
 
 **Deployed Site:** []()https://jobdat.github.io/RPS/
 
