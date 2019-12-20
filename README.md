@@ -15,6 +15,17 @@ For entertainment and amusement.
 The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
 The game was built with HTML, JavaScript, CSS, used EaselJS and TweenJS for the animation functions and other resources mentioned at the end of this readme.
 
+## How to run the app
+
+From the terminal 'open index.html' from root of the project 
+
+OR
+
+'live-server' from the root of the project
+
+OR
+
+Click the deployed link above
 
 ## Wireframe and Domain Model
 [Draw.io link](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
@@ -54,18 +65,18 @@ The player data code would populate the player name. The function checks for the
 
 **Round Select Screen**
 
-Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next and a back button. The next button advanced the game to the next round while the back button would take the player back to the name selection screen, essentially to start the game over. The rounds data was put into a constructor which moved it to a player constructor object.
+Featured three buttons with options to select 3, 5, or 7 rounds. Additionally we added a next button. The next button advanced the game to the next round. The rounds data was put into a constructor which moved it to a player constructor object.
 
 **Round counter**
 
-The rounds counter keeps track of the rounds played, win/losses by the users or cpu and stored the data to the local storage.
+The rounds counter keeps track of the rounds played, wins/losses by the users or cpu and stored the data to the local storage.
 
 ![Round counter](img-README/Rounds_counter.PNG)
 
 **Main Game Screen**
 
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose their weapon, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose the weapon, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
 
 The screen additionally displays
  Display the front page to begin the fight
@@ -74,13 +85,13 @@ The screen additionally displays
  
 **Animation screen**
 
-The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the eventof a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
+The animation screen scrolls in the chosen weapons and animates the fight. the winner's weapon remains on the screen briefly while the loser weapon is "knocked off" the screen. In the event of a tie both weapons remain on the screen briefly. A segment of the js code is displayed below.
 
 ![Animation logic](img-README/Logic.PNG)
 
 **Code testing** 
 
-To ensure funtionality testing functions were incorporated at speocic points in the js. This primarily allowed us to test the funtins nad features of the game as we moved along in makiing this game.
+To ensure funtionality, testing functions were incorporated at specific points in the js. This primarily allowed us to test the funtions and features of the game as we moved along in making this game.
 
 ![Test function](img-README/Test.PNG)
 
