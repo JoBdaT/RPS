@@ -22,7 +22,7 @@ var playerNameUI = document.getElementById('playerNameUI');
 var cpuNameUI = document.getElementById('cpuNameUI');
 var roundUICount = document.getElementById('uiRounds');
 var winLossUICount = document.getElementById('uiWinLoss');
-
+var testVictory = document.getElementById('test-victory');
 
 //EVENT LISTENERS
 nameForm.addEventListener('submit', displayRounds);
@@ -241,7 +241,7 @@ function fight(event){
   console.log('winner: ', winner);
 }
 
-var testVictory = document.getElementById('test-victory');
+
 
 
 // get rid of this function and incorporate the display into draw()
@@ -668,7 +668,7 @@ function handleNextRound() {
     playAgain();
   } else {
     nextRound();
-    
+
   }
 }
 
