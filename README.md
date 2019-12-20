@@ -34,7 +34,7 @@ For entertainment and amusement.
 
 **Last Updated:** December 16, 2019
 
-**Deployed Site:** [Link]()
+**Deployed Site:** [https://jobdat.github.io/RPS/]()
 
 ## Technologies Used
 
