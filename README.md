@@ -1,26 +1,5 @@
 # RPS - The Classic Game of Rock, Paper, Scissors
 
-## Wireframe
-[Domain Model & Wireframe](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=RPS%20Domain%20Model#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1qsFy7ZC1622AbrokXZIPdc7PhxIug0WR%26export%3Ddownload)
-
-**Title Name Entry**
-![title-game](./img-README/title-name.png)
-
-**Title Round Select**
-![title-round](./img-README/title-round.png)
-
-**Title Main Game Screen**
-![main game screen](./img-README/game-main.png)
-
-***All title screens are one page, with hidden/displayed elements***  
-  
-**High Scores**
-![high scores](./img-README/high-scores.png)
-
-**About Us**
-![about us](./img-README/about-us.png)
-
-
 [Project Management Board](https://github.com/JoBdaT/RPS/projects/1?add_cards_query=is%3Aopen)
 
 The project was a team assignment. We selected something simple to work on - the ageold game of Rock, Paper, Scissors.
