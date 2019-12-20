@@ -41,7 +41,7 @@ The first page is a form to create a user data/profile. The checkUser function w
 
 **Function player data**
 
-The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If notthen is creates the user profile and stores it in local storage. 
+The player data code would populate the player name. The function checks for the user data. If user data exists then it is updated and stored in local storage. If not, then it creates the user profile and stores it in local storage. 
 
 ![Check user data function](img-README/CheckUserDATA.PNG)
 
@@ -58,9 +58,9 @@ The rounds counter keeps track of the rounds played, win/losses by the users or 
 **Main Game Screen**
 
 
-The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button of their weapon choice, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
+The screen featured the weapons choice buttons, Rock, Paper, Scissors. The user selects the weapon by clicking the button to choose their weapon, the CPU weapon is selected randomly and stored as a variable. Fight feature displays the battle animation. 
 
-
+The screen additionally displays
  Display the front page to begin the fight
  A reset stats button
  Created animation for playing rock paper scissors
